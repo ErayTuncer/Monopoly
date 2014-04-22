@@ -1,0 +1,7 @@
+<Start>
+<GoJail>
+<Jail>
+<FreeParking>
+<PayTax>
+<Chance>
+<CommunityChest>

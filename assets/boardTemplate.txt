@@ -1,0 +1,10 @@
+Start
+ColoredLand <HexColor> <Name> <Rent> <1 HouseRent> <2 HouseRent> <3 HouseRent> <4 HouseRent> <HotelRent> <Mortgage> <HouseCost>
+Infrastructure <Name> <Rent>
+Transportation <Name> <Rent>
+GoJail
+Jail
+FreeParking
+PayTax
+Chance
+CommunityChest
