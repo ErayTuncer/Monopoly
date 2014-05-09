@@ -16,12 +16,5 @@ public class ColoredLand extends PropertyLand {
 	public BuildingHolder getBuildingHolder() {
 		return buildHolder;
 	}
-
-
-	@Override
-	public boolean isConstructionAllowed() {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	
 }

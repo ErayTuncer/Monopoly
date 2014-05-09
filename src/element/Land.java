@@ -6,7 +6,9 @@ public abstract class Land {
 	
 	public ConstructionAllowance constructionBehavior;
 	
-	public abstract boolean isConstructionAllowed();
+	public final boolean isConstructionAllowed() {
+		return constructionBehavior.isConstructionAllowed();
+	}
 
 	public final ConstructionAllowance getConstructionBehavior() {
 		return constructionBehavior;
