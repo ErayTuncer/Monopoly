@@ -2,6 +2,7 @@ package element;
 
 import util.BuildingHolder;
 import behaviour.ConstructAllowed;
+import behaviour.ConstructionAllowance;
 
 
 public class ColoredLand extends PropertyLand {
@@ -10,6 +11,7 @@ public class ColoredLand extends PropertyLand {
 
 	public ColoredLand() {
 		buildHolder = new BuildingHolder();
+		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_ALLOWED);
 	}
 	
 

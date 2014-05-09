@@ -1,7 +1,11 @@
 package element;
-import behaviour.ConstructDenied;
 
+import behaviour.ConstructionAllowance;
 
 public class TransportationLand extends PropertyLand {
 
+	public TransportationLand() {
+		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_DENIED);
+	}
+	
 }
