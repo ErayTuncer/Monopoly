@@ -27,6 +27,7 @@ public class BoardFactory {
 					addLand(board, landData);
 				}
 			}
+			scanner.close();
 		} catch (FileNotFoundException e) {
 			System.err.println("File : " + file.getAbsolutePath() + " NOT FOUND!");
 		}

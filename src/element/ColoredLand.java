@@ -9,13 +9,19 @@ public class ColoredLand extends PropertyLand {
 	private BuildingHolder buildHolder;
 
 	public ColoredLand() {
-		super(new ConstructAllowed());
 		buildHolder = new BuildingHolder();
 	}
 	
 
 	public BuildingHolder getBuildingHolder() {
 		return buildHolder;
+	}
+
+
+	@Override
+	public boolean isConstructionAllowed() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

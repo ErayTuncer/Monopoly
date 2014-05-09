@@ -1,6 +1,8 @@
 package element;
+import behaviour.ConstructDenied;
 
-public class PayTax extends SpecialLand {
+
+public class TransportationLand extends PropertyLand {
 
 	@Override
 	public boolean isConstructionAllowed() {

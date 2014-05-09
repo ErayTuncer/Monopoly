@@ -1,6 +1,7 @@
 package element;
 
-public class PayTax extends SpecialLand {
+
+public class InfrastructureLand extends PropertyLand {
 
 	@Override
 	public boolean isConstructionAllowed() {
