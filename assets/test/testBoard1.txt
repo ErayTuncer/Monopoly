@@ -2,6 +2,6 @@
 <GoJail>
 <Jail>
 <FreeParking>
-<PayTax>
+<PayTax> <IncomeTax> <200>
 <Chance>
 <CommunityChest>
