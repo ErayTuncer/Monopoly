@@ -4,8 +4,9 @@ import behaviour.ConstructionAllowance;
 
 public class TransportationLand extends PropertyLand {
 
-	public TransportationLand() {
+	public TransportationLand(String name, int cost, Rent rent) {
+		super(name, cost, rent);
 		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_DENIED);
 	}
-	
+
 }

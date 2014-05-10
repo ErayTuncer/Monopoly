@@ -8,4 +8,9 @@ public class FreeParking extends SpecialLand {
 		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_DENIED);
 	}
 
+	@Override
+	public String getName() {
+		return "FreeParking";
+	}
+
 }

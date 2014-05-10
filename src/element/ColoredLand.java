@@ -1,22 +1,37 @@
 package element;
 
+import java.awt.Color;
+
 import util.BuildingHolder;
-import behaviour.ConstructAllowed;
 import behaviour.ConstructionAllowance;
 
 
 public class ColoredLand extends PropertyLand {
 	
 	private BuildingHolder buildHolder;
-
-	public ColoredLand() {
-		buildHolder = new BuildingHolder();
-		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_ALLOWED);
-	}
+	private Color color;
 	
+	public ColoredLand(String name, Color color, int cost, Rent rent) {
+		super(name, cost, rent);
+		setColor(color);
+		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_ALLOWED);
+		initilizeBuildingHolder();
+	}
+
+	private void setColor(Color color) {
+		this.color = color;
+	}
+
+	private void initilizeBuildingHolder() {
+		buildHolder = new BuildingHolder();		
+	}
 
 	public BuildingHolder getBuildingHolder() {
 		return buildHolder;
 	}
 	
+	public Color getColor() {
+		return color;
+	}
+
 }
