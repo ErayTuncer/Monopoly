@@ -1,34 +1,15 @@
 package element;
 
+
 public abstract class PropertyLand extends Land {
 
-	int deedPrice, housePrice, hotelPrice;
-
-	/*public PropertyLand(int deedPrice, int housePrice, int hotelPrice) {
-		this.deedPrice = deedPrice;
-		this.housePrice = housePrice;
-		this.hotelPrice = hotelPrice;
-	}
-*/
-	public int getHousePrice() {
-		return this.housePrice;
-	}
-
-	public int getDeedPrice() {
-		return this.deedPrice;
-	}
-
-	public int getHotelPrice() {
-		return this.hotelPrice;
-	}
-
 	private String name;
-	private int cost;
-	private Rent rent;
+	private int price;
+	private RentInfo rentInfo;
 
-	public PropertyLand(String name, int cost, Rent rent) {
+	public PropertyLand(String name, int price, RentInfo rent) {
 		setName(name);
-		setCost(cost);
+		setPrice(price);
 		setRent(rent);
 	}
 
@@ -41,20 +22,20 @@ public abstract class PropertyLand extends Land {
 		return name;
 	}
 
-	private final void setCost(int cost) {
-		this.cost = cost;
+	private final void setPrice(int price) {
+		this.price = price;
 	}
 
-	private final void setRent(Rent rent) {
-		this.rent = rent;
+	public void setRent(RentInfo rent) {
+		this.rentInfo = rent;
 	}
 
-	public final int getCost() {
-		return cost;
+	public final int getPrice() {
+		return price;
 	}
-
-	public final Rent getRent() {
-		return rent;
+	
+	public final RentInfo getRentInfo() {
+		return rentInfo;
 	}
 	
 }
