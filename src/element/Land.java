@@ -20,5 +20,4 @@ public abstract class Land {
 		this.constructionBehavior = constructionBehavior;
 	}
 
-
 }
