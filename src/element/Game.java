@@ -9,6 +9,7 @@ public class Game {
 	private ArrayList<Player> players;
 	
 	public final int PAYMENT = 1500; 
+	public static final int INITIAL_PAYMENT = 15000;
 
 	public Game(Board board, ArrayList<Player> players) {
 		initBank(board.lands);
@@ -36,6 +37,11 @@ public class Game {
 
 	public ArrayList<Player> getPlayers() {
 		return players;
+	}
+
+	public boolean hasWinner() {
+		if(players.size() == 1) return true;
+		else return false;
 	}
 
 }

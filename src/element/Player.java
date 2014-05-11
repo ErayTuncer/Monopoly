@@ -8,11 +8,11 @@ public class Player {
 	private int playerID, playerBalance;
 	private String playerName;
 
-	public Player(int playerID, String playerName, int playerBalance) {
+	public Player(int playerID, String playerName) {
 		// TODO token will be added
 		this.playerID = playerID;
 		this.playerName = playerName;
-		this.playerBalance = playerBalance; // TODO maybe predefined balance
+		this.playerBalance = Game.INITIAL_PAYMENT;
 	}
 
 	public String getPlayerName() {
