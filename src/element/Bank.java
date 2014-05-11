@@ -8,8 +8,6 @@ public class Bank {
 	private ArrayList<PropertyLand> propertyLands;
 	private ArrayList<Card> cards = new ArrayList<>(); //TODO:
 	
-	public final int INITIAL_PAYMENT = 1500; 
-	
 	private final int MAX_HOUSE_AMOUNT = 32;
 	private final int MAX_HOTEL_AMOUNT = 12;
 	
