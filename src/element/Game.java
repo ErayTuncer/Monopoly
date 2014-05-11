@@ -1,18 +1,16 @@
 package element;
 
+import java.util.ArrayList;
+
 public class Game {
 	private Bank bank;
+	private Board board;
+	private ArrayList<Player> players;
 
-	public Game() {
-		// TODO initialize Bank
-	}
-
-	public void handover(PropertyLand land, Player player) {
-		if (player.getBalance() >= land.getPrice()) {
-			bank.sell(land, player);
-		} else {
-			System.out.println("Not have enough money to buy this property!");
-		}
+	public Game(Bank bank, Board board, ArrayList<Player> players) {
+		this.bank = bank;
+		this.board = board;
+		this.players = players;
 	}
 
 }
