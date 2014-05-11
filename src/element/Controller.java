@@ -14,7 +14,7 @@ public class Controller {
 	}
 
 	private Game game;
-	private String boardFilePath = "!!!!!!!!!!!!!!!!!!";
+	private String boardFilePath = "assets/gameBoard.txt";
 	
 	public Controller() {
 		ArrayList<Player> players = getPlayers();
@@ -26,12 +26,11 @@ public class Controller {
 		ArrayList<Player> players = new ArrayList<Player>();
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Player amount: ");
-		int n = scanner.nextInt();
+		int n = Integer.parseInt(scanner.nextLine());
 		for (int i = 0; i < n; i++) {
 			System.out.println("Enter player name: ");
 			players.add(new Player(i, scanner.nextLine()));
 		}
-		scanner.close();
 		return players;
 	}
 

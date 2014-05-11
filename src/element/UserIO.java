@@ -31,8 +31,7 @@ public abstract class UserIO {
 
 	public static OptionCommand getOptionCommand(Game game) {
 		Scanner scanner = new Scanner(System.in);
-		int choice = scanner.nextInt(); 
-		scanner.close();
+		int choice = Integer.parseInt(scanner.nextLine()); 
 		if( choice == 0) return new EndTurnCommand(game);	
 		throw new RuntimeException("Illegal Option");
 	}
