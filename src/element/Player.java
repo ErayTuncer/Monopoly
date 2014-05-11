@@ -7,9 +7,10 @@ public class Player {
 	private ArrayList<Land> propertiesOwned;
 	private int playerID, playerBalance;
 	private String playerName;
+	private Token token;
 
 	public Player(int playerID, String playerName) {
-		// TODO token will be added
+		this.token = new Token();
 		this.playerID = playerID;
 		this.playerName = playerName;
 		this.playerBalance = Game.INITIAL_PAYMENT;
@@ -58,5 +59,8 @@ public class Player {
 	public void useCard(Card card) {// TODO implement
 		this.cardsOwned.remove(card);
 	}
-
+	
+	public void moveToken(int index) {
+		this.token.setLocation(index);
+	}
 }
