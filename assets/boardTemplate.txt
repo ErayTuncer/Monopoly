@@ -11,5 +11,5 @@
 <Jail>
 <FreeParking>
 <PayTax> <Name> <TaxValue>
-<Chance
+<Chance>
 <CommunityChest>

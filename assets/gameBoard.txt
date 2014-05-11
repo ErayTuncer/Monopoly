@@ -1,0 +1,8 @@
+Start
+ColoredLand,OldKentRoad,60,2,#cc3333,10,30,90,160,250,50,30
+CommunityChest
+ColoredLand,WhitechapelRoad,60,4,#cc3333,20,60,180,360,450,50,30
+PayTax,IncomeTax,200
+ColoredLand,TheAngelIslington,100,6,#4c8bff,30,90,270,400,550,50,50
+Chance
+ColoredLand,EustonRoad,100,6,#4c8bff,30,90,270,400,550,50,50
