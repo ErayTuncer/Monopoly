@@ -8,13 +8,16 @@ public class Game {
 	private Board board;
 	private ArrayList<Player> players;
 	
+	private Player currentPlayer;
+	
 	public final int PAYMENT = 1500; 
 	public static final int INITIAL_PAYMENT = 15000;
 
 	public Game(Board board, ArrayList<Player> players) {
-		initBank(board.lands);
+		initBank(board.getLands());
 		this.board = board;
 		this.players = players;
+		this.currentPlayer = players.get(0);
 	}
 
 	private void initBank(ArrayList<Land> lands) {
@@ -42,6 +45,14 @@ public class Game {
 	public boolean hasWinner() {
 		if(players.size() == 1) return true;
 		else return false;
+	}
+
+	public Player getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setCurrentPlayer(Player player) {
+		this.currentPlayer = player;
 	}
 
 }

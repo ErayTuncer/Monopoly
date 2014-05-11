@@ -16,7 +16,7 @@ public class Player {
 		this.playerBalance = Game.INITIAL_PAYMENT;
 	}
 
-	public String getPlayerName() {
+	public String getName() {
 		return this.playerName;
 	}
 
@@ -59,8 +59,10 @@ public class Player {
 	public void useCard(Card card) {// TODO implement
 		this.cardsOwned.remove(card);
 	}
-	
-	public void moveToken(int index) {
-		this.token.setLocation(index);
+
+	public Token getToken() {
+		return token;
 	}
+	
+	
 }

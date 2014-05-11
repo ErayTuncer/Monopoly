@@ -4,9 +4,20 @@ import java.util.Random;
 
 public class DicePair {
 	
-	public static int[] roll(){
+	private static int[] current;
+	
+	public static void roll(){
 		Random rgen = new Random();
-		int[] dicePair = {rgen.nextInt(6), rgen.nextInt(6)};
-		return dicePair;
+		current = new int[] {rgen.nextInt(6) + 1, rgen.nextInt(6) + 1};
 	}
+
+	public static int getDiceValue() {
+		return current[0] + current[1];
+	}
+	
+	public static int[] getCurrent() {
+		return current;
+	}
+	
+	
 }

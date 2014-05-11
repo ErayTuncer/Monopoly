@@ -55,21 +55,21 @@ public class BoardFactory {
 		String landType = getLandType(landData);
 		
 		if (landType.equals(LAND_START)) {
-			board.lands.add(new Start());
+			board.getLands().add(new Start());
 		} else if (landType.equals(LAND_GOJAIL)) {
-			board.lands.add(new GoJail());
+			board.getLands().add(new GoJail());
 		} else if (landType.equals(LAND_JAIL)) {
-			board.lands.add(new Jail());
+			board.getLands().add(new Jail());
 		} else if (landType.equals(LAND_FREEPARKING)) {
-			board.lands.add(new FreeParking());
+			board.getLands().add(new FreeParking());
 		} else if (landType.equals(LAND_PAYTAX)) {
-			board.lands.add(new PayTax());
+			board.getLands().add(new PayTax());
 		} else if (landType.equals(LAND_CHANCE)) {
-			board.lands.add(new Chance());
+			board.getLands().add(new Chance());
 		} else if (landType.equals(LAND_COMMUNITYCHEST)) {
-			board.lands.add(new CommunityChest());
+			board.getLands().add(new CommunityChest());
 		} else if (landType.equals(LAND_COLOREDLAND)) {
-			board.lands.add(new ColoredLand(getLandName(landData), getLandColor(landData), getLandPrice(landData), getHousePrice(landData), getRentInfo(landData)));
+			board.getLands().add(new ColoredLand(getLandName(landData), getLandColor(landData), getLandPrice(landData), getHousePrice(landData), getRentInfo(landData)));
 		} else {
 			throw new RuntimeException("There is no land type named : " + landType);
 		}
