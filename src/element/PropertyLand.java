@@ -4,10 +4,10 @@ public abstract class PropertyLand extends Land {
 
 	private String name;
 	private int deedPrice;
-	private Rent rent;
+	private RentInfo rentInfo;
 	private boolean mortgaged;
 
-	public PropertyLand(String name, int deedPrice, Rent rent) {
+	public PropertyLand(String name, int deedPrice, RentInfo rent) {
 		this.name = name;
 		this.deedPrice = deedPrice;
 		this.rent = rent;
@@ -23,8 +23,12 @@ public abstract class PropertyLand extends Land {
 		return this.deedPrice;
 	}
 
-	public final Rent getRent() {
-		return rent;
+	public void setRent(RentInfo rent) {
+		this.rentInfo = rent;
+	}
+	
+	public final RentInfo getRentInfo() {
+		return rentInfo;
 	}
 	
 	public void changeMortgageStatus(boolean status){
@@ -34,7 +38,5 @@ public abstract class PropertyLand extends Land {
 	public boolean isMortgaged(){
 		return this.mortgaged;
 	}
-	
-	
 
 }

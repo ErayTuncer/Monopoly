@@ -24,8 +24,16 @@ public class Player {
 	public int getPlayerID() {
 		return this.playerID;
 	}
-
-	public int getBalance() {
+	
+	public void increaseBalance(int amount){
+		this.playerBalance += amount;
+	}
+	
+	public void decreaseBalance(int amount){
+		this.playerBalance -= amount;
+	}
+	
+	public int getBalance(){
 		return this.playerBalance;
 	}
 
@@ -61,12 +69,6 @@ public class Player {
 		game.unmortgage(land, this);
 	}
 	
-
-
-
-
-
-
 	public void discardProperty(Land land) {
 		this.propertiesOwned.remove(land);
 	}
@@ -81,11 +83,6 @@ public class Player {
 
 	public void useCard(Card card) {// TODO implement
 		this.cardsOwned.remove(card);
-	}
-
-
-	public void useCard() {
-
 	}
 
 }
