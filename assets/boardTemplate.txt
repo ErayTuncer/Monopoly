@@ -1,10 +1,15 @@
-Start
-ColoredLand <HexColor> <Name> <SalePrice> <Rent> <1 HouseRent> <2 HouseRent> <3 HouseRent> <4 HouseRent> <HotelRent> <Mortgage> <HouseCost>
-Infrastructure <Name> <SalePrice> <Rent>
-Transportation <Name> <SalePrice> <Rent>
-GoJail
-Jail
-FreeParking
+######
+## Each component must be split by ',' 
+## '<' '>' must be removed
+######
+
+<Start>
+<ColoredLand> <Name> <SalePrice> <Rent> <HexColor> <1 HouseRent> <2 HouseRent> <3 HouseRent> <4 HouseRent> <HotelRent> <Mortgage> <HouseCost>
+<Infrastructure> <Name> <SalePrice> <Rent>
+<Transportation <Name> <SalePrice> <Rent>
+<GoJail>
+<Jail>
+<FreeParking>
 <PayTax> <Name> <TaxValue>
-Chance
-CommunityChest
+<Chance
+<CommunityChest>

@@ -1,7 +1,7 @@
-<Start>
-<GoJail>
-<Jail>
-<FreeParking>
-<PayTax> <IncomeTax> <200>
-<Chance>
-<CommunityChest>
+Start
+GoJail
+Jail
+FreeParking
+PayTax,IncomeTax,200
+Chance
+CommunityChest
