@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Player {
 	private ArrayList<Card> cardsOwned;
 	private ArrayList<Land> propertiesOwned;
-	private int playerID, playerBalance, houseAmount, hotelAmount;
+	private int playerID, playerBalance;
 	private String playerName;
 	
 	public Player(int playerID, String playerName, int playerBalance){ //TODO token will be added
@@ -23,8 +23,12 @@ public class Player {
 		this.propertiesOwned.remove(land);
 	}
 	
-	public void changeBalance(int amount){
+	public void increaseBalance(int amount){
 		this.playerBalance += amount;
+	}
+	
+	public void decreaseBalance(int amount){
+		this.playerBalance -= amount;
 	}
 	
 	public int getBalance(){
@@ -55,24 +59,8 @@ public class Player {
 		this.cardsOwned.remove(card);
 	}
 	
-	public void buyHouse(){
-		houseAmount++;
-	}
-	
-	public void sellHouse(){
-		houseAmount--;
-	}
-	
-	public void buyHotel() {
-		hotelAmount++;
-	}
-	
-	public void sellHotel(){
-		hotelAmount--;
-	}
-	
 	public void useCard(){
-		
+		//TODO:
 	}
 	
 }

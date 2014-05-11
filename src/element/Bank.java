@@ -2,46 +2,68 @@ package element;
 
 import java.util.ArrayList;
 
+import util.BuildingHolder;
+
 public class Bank {
-	private ArrayList<PropertyLand> titleDeeds = new ArrayList<>();
-	private ArrayList<Card> cards = new ArrayList<>();
-	private final int SALARY = 1500;
-	private int balance = Integer.MAX_VALUE; 
-	private int houses = 32;
-	private int hotels = 12;
+	private ArrayList<PropertyLand> propertyLands = new ArrayList<PropertyLand>();
+	private ArrayList<Card> cards = new ArrayList<>(); //TODO:
 	
+	public final int INITIAL_PAYMENT = 1500; 
 	
+	private final int MAX_HOUSE_AMOUNT = 32;
+	private final int MAX_HOTEL_AMOUNT = 12;
 	
+	private ArrayList<House> houses;
+	private  ArrayList<Hotel> hotels;
+	
+	public Bank(ArrayList<PropertyLand> propertyLands){
+		this.propertyLands = propertyLands;
+		initBuildings();
+	}
+	
+	private void initBuildings() {
+		initHouses();
+		initHotels();		
+	}
+
+	private void initHouses() {
+		houses = new ArrayList<House>();
+		for (int i = 0; i < MAX_HOUSE_AMOUNT; i++)
+			houses.add(new House());
+	}
+
+	private void initHotels() {
+		hotels = new ArrayList<Hotel>();
+		for (int i = 0; i < MAX_HOTEL_AMOUNT; i++)
+			hotels.add(new Hotel());
+	}
+
 	public void sell(PropertyLand land, Player player){
-		titleDeeds.remove(land);
-		balance += land.getDeedPrice();
+		propertyLands.remove(land);
 		player.addProperty(land);
-		player.changeBalance(-land.getDeedPrice());
+		player.decreaseBalance(land.getPrice());
+	}
+	
+	public void pay(Player player, int amount){
+		player.increaseBalance(amount);
+	}
+	
+	public void sellHouse(Player player, ColoredLand currentLand){
+		player.decreaseBalance(currentLand.getHousePrice());
+		BuildingHolder holder = currentLand.getBuildingHolder();
+		holder.add(houses.remove(0));
+	}
+	
+	public void sellHotel(Player player, ColoredLand currentLand){
+		player.decreaseBalance(currentLand.getHousePrice());
+		BuildingHolder holder = currentLand.getBuildingHolder();
+		holder.add(hotels.remove(0));
 	}
 	
 	//TODO do price exchange
 	public void trade(Land land, Player seller, Player buyer){
 		seller.discardProperty(land);
 		buyer.addProperty(land);
-	}
-	
-	public void paySalary(Player player){
-		player.changeBalance(SALARY);
-		balance -= SALARY;
-	}
-	
-	public void sellHouse(Player player, PropertyLand currentLand){
-		player.buyHouse();
-		player.changeBalance(-currentLand.getHousePrice());
-		houses--;
-		balance += currentLand.getHousePrice();
-	}
-	
-	public void sellHotel(Player player, PropertyLand currentLand){
-		player.buyHotel();
-		player.changeBalance(-currentLand.getHotelPrice());
-		hotels--;
-		balance += currentLand.getHotelPrice();
 	}
 
 }
