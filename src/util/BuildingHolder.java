@@ -3,6 +3,8 @@ package util;
 import java.util.ArrayList;
 
 import element.Building;
+import element.Hotel;
+import element.House;
 
 public class BuildingHolder extends ArrayList<Building> {
 	
@@ -51,6 +53,25 @@ public class BuildingHolder extends ArrayList<Building> {
 		}
 		
 		return numberHotel;	
+	}
+	
+	public House removeHouse(){
+		for (int i = 0; i < this.size(); i++) {
+			if(this.get(i) instanceof House) {
+				return (House) this.remove(i);
+			}
+		}
+		return null;
+	
+	}
+	
+	public Hotel removeHotel() {
+		for (int i = 0; i < this.size(); i++) {
+			if(this.get(i) instanceof Hotel) {
+				return (Hotel) this.remove(i);
+			}
+		}
+		return null;
 	}
 
 }

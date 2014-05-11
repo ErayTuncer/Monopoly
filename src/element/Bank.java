@@ -65,6 +65,12 @@ public class Bank {
 	public void buyHouse(Player player, ColoredLand currentLand) {
 		player.increaseBalance(currentLand.getHousePrice());
 		BuildingHolder holder = currentLand.getBuildingHolder();
-		//houses.add(holder.remove(0));
+		houses.add(holder.removeHouse());
+	}
+	
+	public void buyHotel(Player player, ColoredLand currentLand) {
+		player.increaseBalance(currentLand.getHotelPrice());
+		BuildingHolder holder = currentLand.getBuildingHolder();
+		hotels.add(holder.removeHotel());
 	}
 }
