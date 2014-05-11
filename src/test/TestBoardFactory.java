@@ -36,26 +36,18 @@ public class TestBoardFactory {
 	public void testColoredLand() {
 		Board board = BoardFactory.readBoard(new File("assets/test/testBoard2.txt"));
 		ColoredLand coloredLand = (ColoredLand) board.lands.get(0);
+		ColoredLandRent rent = (ColoredLandRent) coloredLand.getRentInfo();
 		
 		assertEquals(Color.decode("#964818"), coloredLand.getColor());
 		assertEquals("LIVERPOOL", coloredLand.getName());
 		assertEquals(60, coloredLand.getPrice());
-		//assertEquals(2, coloredLand.getBaseRent());
-	}
-
-	@Test
-	public void testPayTax() {
-		Board board = BoardFactory.readBoard(new File("assets/test/testBoard2.txt"));
-
-		PayTax payTax = (PayTax) board.lands.get(1);
-		InfrastructureLand infrastructure = (InfrastructureLand) board.lands.get(2);
-		TransportationLand transportation = (TransportationLand) board.lands.get(3);
-
 		
-		//assertEquals(Color.decode("#964818"), coloredLand.getColor());
-		//assertEquals("LIVERPOOL", coloredLand.getName());
-		//assertEquals(60, coloredLand.getPrice());
-
+		assertEquals(2, rent.getBaseRent());
+		assertEquals(10, rent.getHouseRent(1));
+		assertEquals(30, rent.getHouseRent(2));
+		assertEquals(90, rent.getHouseRent(3));
+		assertEquals(160, rent.getHouseRent(4));
+		assertEquals(250, rent.getHotelRent());
 	}
 
 }

@@ -10,12 +10,11 @@ public class ColoredLand extends PropertyLand {
 	
 	private BuildingHolder buildingHolder;
 	private Color color;
-	private int housePrice, hotelPrice;
+	private int housePrice;
 	
-	public ColoredLand(String name, Color color, int price, int housePrice, int hotelPrice, RentInfo rent) {
+	public ColoredLand(String name, Color color, int price, int housePrice, RentInfo rent) {
 		super(name, price, rent);
 		this.housePrice = housePrice;
-		this.hotelPrice = hotelPrice;
 		setColor(color);
 		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_ALLOWED);
 		initilizeBuildingHolder();
@@ -42,7 +41,7 @@ public class ColoredLand extends PropertyLand {
 	}
 
 	public int getHotelPrice() {
-		return hotelPrice;
+		return housePrice * 5;
 	}
 
 }
