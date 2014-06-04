@@ -1,6 +1,6 @@
 package element;
 
-public class TransportationRent extends RentInfo {
+public class TransportationRent extends Rent {
 
 	public TransportationRent(int baseRent) {
 		super(baseRent);

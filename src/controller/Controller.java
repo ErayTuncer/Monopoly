@@ -1,9 +1,16 @@
-package element;
+package controller;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import command.Command;
+import element.Board;
+import element.DicePair;
+import element.Game;
+import element.Player;
+import element.Token;
+import ui.UserIO;
 import util.BoardFactory;
 
 public class Controller {
@@ -41,8 +48,8 @@ public class Controller {
 			UserIO.displayCurrentStatusOf(game);
 			
 			UserIO.displayOptionsOf(game);		
-			OptionCommand command = UserIO.getOptionCommand(game);
-			command.execute();
+			Command optionCommand = UserIO.getOptionCommand();
+			optionCommand.execute(this);
 		}
 
 	}
@@ -52,6 +59,10 @@ public class Controller {
 		int newLocation = (token.getLandIndex() + diceValue)
 									% game.getBoard().getSize();
 		token.setLocation(newLocation);
+	}
+
+	public Game getGame() {
+		return game;
 	}
 
 }

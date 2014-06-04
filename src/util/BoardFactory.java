@@ -96,7 +96,7 @@ public class BoardFactory {
 		return housePrice;
 	}
 
-	private static RentInfo getRentInfo(ArrayList<String> landData) {
+	private static Rent getRentInfo(ArrayList<String> landData) {
 		ColoredLandRent rent = new ColoredLandRent(Integer.parseInt(getValueAt(landData, 3)));
 		rent.setHouseRent(1, Integer.parseInt(getValueAt(landData, 5)));
 		rent.setHouseRent(2, Integer.parseInt(getValueAt(landData, 6)));

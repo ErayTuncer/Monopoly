@@ -1,6 +1,6 @@
 package element;
 
-public class InfrastructureRent extends RentInfo {
+public class InfrastructureRent extends Rent {
 	
 	private int wholeRent; // used if you have all the infrastructures
 

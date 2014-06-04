@@ -1,6 +1,6 @@
 package element;
 
-public class ColoredLandRent extends RentInfo {
+public class ColoredLandRent extends Rent {
 	
 	private int[] houseRents; 
 	private int   hotelRent;

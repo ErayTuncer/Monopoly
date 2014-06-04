@@ -1,6 +1,14 @@
-package element;
+package ui;
 
 import java.util.Scanner;
+
+import command.EndTurnCommand;
+import command.Command;
+import element.Board;
+import element.DicePair;
+import element.Game;
+import element.Player;
+import element.Token;
 
 public abstract class UserIO {
 	
@@ -29,10 +37,10 @@ public abstract class UserIO {
 		System.out.print("Type Option : ");
 	}
 
-	public static OptionCommand getOptionCommand(Game game) {
+	public static Command getOptionCommand() {
 		Scanner scanner = new Scanner(System.in);
 		int choice = Integer.parseInt(scanner.nextLine()); 
-		if( choice == 0) return new EndTurnCommand(game);	
+		if( choice == 0) return new EndTurnCommand();	
 		throw new RuntimeException("Illegal Option");
 	}
 	

@@ -12,7 +12,7 @@ public class ColoredLand extends PropertyLand {
 	private Color color;
 	private int housePrice;
 	
-	public ColoredLand(String name, Color color, int price, int housePrice, RentInfo rent) {
+	public ColoredLand(String name, Color color, int price, int housePrice, Rent rent) {
 		super(name, price, rent);
 		this.housePrice = housePrice;
 		setColor(color);

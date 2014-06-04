@@ -5,9 +5,9 @@ public abstract class PropertyLand extends Land {
 
 	private String name;
 	private int price;
-	private RentInfo rentInfo;
+	private Rent rentInfo;
 
-	public PropertyLand(String name, int price, RentInfo rent) {
+	public PropertyLand(String name, int price, Rent rent) {
 		setName(name);
 		setPrice(price);
 		setRent(rent);
@@ -26,7 +26,7 @@ public abstract class PropertyLand extends Land {
 		this.price = price;
 	}
 
-	public void setRent(RentInfo rent) {
+	public void setRent(Rent rent) {
 		this.rentInfo = rent;
 	}
 
@@ -34,7 +34,7 @@ public abstract class PropertyLand extends Land {
 		return price;
 	}
 	
-	public final RentInfo getRentInfo() {
+	public final Rent getRentInfo() {
 		return rentInfo;
 	}
 	

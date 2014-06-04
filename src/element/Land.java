@@ -5,7 +5,7 @@ import behaviour.ConstructionAllowance;
 public abstract class Land {
 
 	private ConstructionAllowance constructionBehavior;
-
+	
 	public abstract String getName();
 
 	public final boolean isConstructionAllowed() {
