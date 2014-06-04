@@ -1,13 +1,26 @@
 package command;
 
-import controller.Controller;
+import util.RentCalculator;
+import element.Game;
+import element.Land;
+import element.Player;
+import element.PropertyLand;
 
-public class PayRentCommand implements Command {	
+public class PayRentCommand extends PayCommand {	
 
 	@Override
-	public void execute(Controller controller) {
-		// TODO Auto-generated method stub
+	protected int getPaymentAmount(Land land) {
+		PropertyLand property =  (PropertyLand) land;
+		return RentCalculator.calculate(property);
+	}
 
+	@Override
+	protected void makeTransaction(Game game, int paymentAmount) {
+		Player source = game.getCurrentPlayer();
+		Player target = game.getOwner((PropertyLand) getCurrentLand(game));
+		source.decreaseBalance(paymentAmount);
+		target.increaseBalance(paymentAmount);
+		
 	}
 
 }
