@@ -62,7 +62,7 @@ public class TestConstructionAllowance {
 
 	@Test
 	public void testAllowanceForPaytax() {
-		Land payTaxLand = new PayTax();
+		Land payTaxLand = new PayTax(2000);
 		assertFalse(payTaxLand.isConstructionAllowed());
 	}
 
