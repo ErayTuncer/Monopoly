@@ -2,6 +2,8 @@ package element;
 
 import java.awt.Color;
 
+import command.AskBuyCommand;
+
 import util.BuildingHolder;
 import behaviour.ConstructionAllowance;
 
@@ -18,6 +20,7 @@ public class ColoredLand extends PropertyLand {
 		setColor(color);
 		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_ALLOWED);
 		initilizeBuildingHolder();
+		setAssignment(new AskBuyCommand());
 	}
 
 	private void setColor(Color color) {
