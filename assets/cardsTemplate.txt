@@ -1,0 +1,7 @@
+#####
+## Each component must be split by ','
+## '<' '>' must be removed
+#####
+
+<CommunityChest> <Text> <Command>
+<Chance> <Text> <Command>

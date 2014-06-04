@@ -6,8 +6,7 @@ public class EmptyCommand implements Command {
 
 	@Override
 	public void execute(Controller controller) {
-		// TODO Auto-generated method stub
-		
+		// Intentionally left blank
 	}
 
 }

@@ -1,12 +1,9 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import element.Game;
 
 public class GameScreen extends JFrame{
 	private final int HEIGHT = 730;
