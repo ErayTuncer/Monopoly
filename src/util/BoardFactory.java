@@ -63,7 +63,7 @@ public class BoardFactory {
 		} else if (landType.equals(LAND_FREEPARKING)) {
 			board.getLands().add(new FreeParking());
 		} else if (landType.equals(LAND_PAYTAX)) {
-			board.getLands().add(new PayTax());
+			board.getLands().add(new PayTax(getTaxValue(landData, 2)));
 		} else if (landType.equals(LAND_CHANCE)) {
 			board.getLands().add(new Chance());
 		} else if (landType.equals(LAND_COMMUNITYCHEST)) {
@@ -108,6 +108,10 @@ public class BoardFactory {
 
 	private static String getLandType(ArrayList<String> landData) {
 		return getValueAt(landData, 0);
+	}
+
+	private static int getTaxValue(ArrayList<String> landData, int index){
+		return Integer.parseInt(getValueAt(landData, index));
 	}
 	
 	private static String getValueAt(ArrayList<String> landData, int index) {

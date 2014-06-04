@@ -30,6 +30,14 @@ public class Game {
 		bank = new Bank(propertyLands);
 	}
 
+	public Player getOwner(PropertyLand property){
+		for (Player player: players) {
+			if(player.getProperties().contains(property))
+				return player;
+		}
+		return null;
+	}
+	
 	public Bank getBank() {
 		return bank;
 	}
