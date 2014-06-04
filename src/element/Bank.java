@@ -6,7 +6,8 @@ import util.BuildingHolder;
 
 public class Bank {
 	private ArrayList<PropertyLand> propertyLands;
-	private ArrayList<Card> cards = new ArrayList<>(); //TODO:
+	private ArrayList<Card> communityCards = new ArrayList<>(); //TODO:
+	private ArrayList<Card> chanceCards = new ArrayList<>(); //TODO:
 	
 	private final int MAX_HOUSE_AMOUNT = 32;
 	private final int MAX_HOTEL_AMOUNT = 12;
@@ -71,4 +72,15 @@ public class Bank {
 		BuildingHolder holder = currentLand.getBuildingHolder();
 		hotels.add(holder.removeHotel());
 	}
+
+	public ArrayList<Card> getCommunityCards() {
+		return communityCards;
+	}
+
+	public ArrayList<Card> getChanceCards() {
+		return chanceCards;
+	}
+	
+	
+	
 }
