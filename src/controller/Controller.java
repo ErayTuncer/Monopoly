@@ -19,7 +19,7 @@ public class Controller {
 		Controller gameController = new Controller();
 		gameController.start();
 	}
-
+	
 	private Game game;
 	private String boardFilePath = "assets/gameBoard.txt";
 	
@@ -42,16 +42,27 @@ public class Controller {
 	}
 
 	private void start() {
-		while (!game.hasWinner()) {
-			DicePair.roll();
-			movePlayer(game.getCurrentPlayer(), DicePair.getDiceValue());
+		update();
+	}
+	
+	public void update() {
+		if(!game.hasWinner()) {
 			UserIO.displayCurrentStatusOf(game);
 			
-			UserIO.displayOptionsOf(game);		
-			Command optionCommand = UserIO.getOptionCommand();
-			optionCommand.execute(this);
+			UserIO.displayOptionsOf(game);
 		}
+	}
 
+	public void nextTurn() {
+		int newPlayerIndex = (game.getPlayers().indexOf(game.getCurrentPlayer()) + 1) % game.getPlayers().size();
+		game.setCurrentPlayer(game.getPlayers().get(newPlayerIndex));
+		
+		DicePair.roll();
+		movePlayer(game.getCurrentPlayer(), DicePair.getDiceValue());
+	}
+	
+	public void execute(Command command) {
+		command.execute(this);
 	}
 
 	private void movePlayer(Player player, int diceValue) {
