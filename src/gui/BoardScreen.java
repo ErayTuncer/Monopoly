@@ -10,11 +10,12 @@ import javax.swing.JPanel;
 import element.Game;
 import element.Player;
 
-public class BoardScreen extends JPanel{
+@SuppressWarnings("serial")
+public class BoardScreen extends JPanel {
 	private int[][] tileCoordinates;
-	private Game game = new Game(null, null); //TODO
-	
-	public BoardScreen(){ //TODO
+	private Game game;
+
+	public BoardScreen(Game game) { // TODO
 		initialize(game);
 		addTiles();
 		addTokens();
@@ -22,7 +23,7 @@ public class BoardScreen extends JPanel{
 	}
 
 	private void initialize(Game game) {
-		this.game = game; // TODO change it with a gui component
+		this.game = game;
 		setFocusable(true);
 		setLayout(null);
 		setBounds(0, 0, 700, 700);
@@ -35,14 +36,14 @@ public class BoardScreen extends JPanel{
 		for (int i = 0; i < tileCoordinates.length; i++) {
 			tileCoordinates[i][0] = xPos;
 			tileCoordinates[i][1] = yPos;
-			
+
 			if (0 <= i && i < 10) {
 				xPos -= 60;
-			} else if (10 <= i && i < 20){
+			} else if (10 <= i && i < 20) {
 				yPos -= 60;
 			} else if (20 <= i && i < 30) {
 				xPos += 60;
-			} else if (30 <= i && i < 40){
+			} else if (30 <= i && i < 40) {
 				yPos += 60;
 			} else {
 				throw new RuntimeException("Too many tiles");
@@ -52,7 +53,7 @@ public class BoardScreen extends JPanel{
 
 	private void addTokens() {
 		ArrayList<Player> players = game.getPlayers();
-		
+
 	}
 
 	private void addBoardImage() {
@@ -62,5 +63,9 @@ public class BoardScreen extends JPanel{
 		board.setBounds(0, 0, 700, 700);
 		add(board);
 	}
-	
+
+	public void update() {
+		// TODO
+	}
+
 }
