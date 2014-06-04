@@ -1,8 +1,6 @@
 package command;
 
 import controller.Controller;
-import element.Game;
-
 
 public class EndTurnCommand implements Command {
 

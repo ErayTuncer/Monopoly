@@ -1,0 +1,8 @@
+Chance,Go to Start,MoveTokenCommand,Start
+Chance,Go to Ortakoy,MoveTokenCommand,Jail
+Chance,Get 1M prize,GetPrizeCommand,1000
+Chance,Pay 500K,PayTaxCommand,500
+CommunityChest,1M prize,GetPrizeCommand,1000
+CommunityChest,Pay 1.5M tax,PayTaxCommand,1500
+CommunityChest,Go to Start,MoveTokenCommand,Start
+CommunityChest,Go to Jail,MoveTokenCommand,Jail
