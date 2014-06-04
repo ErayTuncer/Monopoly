@@ -14,6 +14,7 @@ import element.Player;
 public class BoardScreen extends JPanel {
 	private int[][] tileCoordinates;
 	private Game game;
+	private ArrayList<JLabel> tokens;
 
 	public BoardScreen(Game game) { // TODO
 		initialize(game);
@@ -24,6 +25,7 @@ public class BoardScreen extends JPanel {
 
 	private void initialize(Game game) {
 		this.game = game;
+		this.tokens = new ArrayList<>();
 		setFocusable(true);
 		setLayout(null);
 		setBounds(0, 0, 700, 700);
@@ -31,8 +33,8 @@ public class BoardScreen extends JPanel {
 
 	private void addTiles() {
 		tileCoordinates = new int[40][2];
-		int xPos = 620;
-		int yPos = 620;
+		int xPos = 630;
+		int yPos = 630;
 		for (int i = 0; i < tileCoordinates.length; i++) {
 			tileCoordinates[i][0] = xPos;
 			tileCoordinates[i][1] = yPos;
@@ -53,6 +55,15 @@ public class BoardScreen extends JPanel {
 
 	private void addTokens() {
 		ArrayList<Player> players = game.getPlayers();
+		for (Player player : players) {
+			//TODO get players' own token image
+			Image tokenImage = new ImageIcon("assets/yuksuk.png").getImage();
+			tokenImage = tokenImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+			JLabel token = new JLabel(new ImageIcon(tokenImage));
+			token.setBounds(tileCoordinates[0][0], tileCoordinates[0][1],40,40);
+			tokens.add(token);
+			add(token);
+		}
 
 	}
 
@@ -65,7 +76,22 @@ public class BoardScreen extends JPanel {
 	}
 
 	public void update() {
-		// TODO
+		//TODO
+	/*	ArrayList<Player> players = game.getPlayers();
+		
+		
+		for (Player player : players) {
+			Image tokenImage = new ImageIcon("assets/yuksuk.png").getImage();
+			tokenImage = tokenImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+			JLabel token = new JLabel(new ImageIcon(tokenImage));
+			
+			int landIndex = player.getToken().getLandIndex() % tileCoordinates.length;
+			token.setLocation(tileCoordinates[landIndex][0], tileCoordinates[landIndex][1]);
+			
+			repaint();
+			revalidate();
+			add(token);
+		}*/
 	}
 
 }
