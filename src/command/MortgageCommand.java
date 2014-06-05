@@ -9,51 +9,55 @@ import element.PropertyLand;
 public class MortgageCommand implements Command {
 
 	private PropertyLand property;
-	
+
 	public MortgageCommand(PropertyLand property) {
 		this.property = property;
 	}
-	
+
 	@Override
 	public void execute(Controller controller) {
 		Player player = controller.getGame().getCurrentPlayer();
-		if(player.getProperties().contains(property)) {
-			askMortgage(player, property);
+		if (player.getProperties().contains(property)) {
+			askMortgage(player);
 		} else if (player.getMortgagedProperties().contains(property)) {
-			askUnmortgage(player, property);
+			askUnmortgage(player);
 		}
-		
 	}
 
-	private void askMortgage(Player player, PropertyLand property) {
-		String title = player.getName();
-		String message = "Do you want to mortgage " + property + " for " + property.getMortgage() + "K ?";
-		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
-		
-		if(reply == JOptionPane.YES_OPTION) {
-			player.getMortgagedProperties().add(property);
-			player.getProperties().remove(property);
-			player.increaseBalance(property.getMortgage());
-			JOptionPane.showMessageDialog(null, property.getName() + " is mortgaged for " + property.getMortgage() + "K");
-		} else {
-			JOptionPane.showMessageDialog(null, "Mortgage canceled.");
-		}
-		
+	private void askMortgage(Player player) {
+		int reply = ask(player, "mortgage");
+		doCommand(player, reply, "mortgage");
 	}
 
-	private void askUnmortgage(Player player, PropertyLand property2) {
-		String title = player.getName();
-		String message = "Do you want to UNmortgage " + property + " for " + property.getMortgage() + "K ?";
-		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
-		
-		if(reply == JOptionPane.YES_OPTION) {
-			player.getProperties().add(property);
-			player.getMortgagedProperties().remove(property);
-			player.decreaseBalance(property.getMortgage());
-			JOptionPane.showMessageDialog(null, property.getName() + " is UNmortgaged for " + property.getMortgage() + "K");
+	private void askUnmortgage(Player player) {
+		int reply = ask(player, "unmortgage");
+		doCommand(player, reply, "unmortgage");
+	}
+
+	private void doCommand(Player player, int reply, String command) {
+		if (reply == JOptionPane.YES_OPTION) {
+			if (command.equals("mortgage")) {
+				player.getProperties().remove(property);
+				player.getMortgagedProperties().add(property);
+				player.increaseBalance(property.getMortgage());
+			} else if (command.equals("unmortgage")) {
+				player.getProperties().add(property);
+				player.getMortgagedProperties().remove(property);
+				player.decreaseBalance(property.getMortgage());
+			}
+			JOptionPane.showMessageDialog(null, String.format(
+					"%s is %s for %dK.", property.getName(), command, property.getMortgage()));
 		} else {
-			JOptionPane.showMessageDialog(null, "UNmortgage canceled.");
+			JOptionPane.showMessageDialog(null, command + " canceled.");
 		}
+	}
+
+	private int ask(Player player, String command) {
+		String title = player.getName();
+		String message = String.format("Do you want to %s %s for %dK?",
+				command, property.getName(), property.getMortgage());
+		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+		return reply;
 	}
 
 }
