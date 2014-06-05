@@ -109,19 +109,6 @@ public class BoardFactory {
 		int housePrice = Integer.parseInt(getValueAt(landData, 11));
 		return housePrice;
 	}
-
-	private static Rent getTransportationLandRentInfo(ArrayList<String> landData) {
-		TransportationRent rent = new TransportationRent(
-				Integer.parseInt(getValueAt(landData, 3)));
-		return rent;
-	}
-
-	private static Rent getInfrastructureLandRentInfo(ArrayList<String> landData) {
-		InfrastructureRent rent = new InfrastructureRent(
-				Integer.parseInt(getValueAt(landData, 3)),
-				Integer.parseInt(getValueAt(landData, 4)));
-		return rent;
-	}
 	
 	private static Rent getColoredLandRentInfo(ArrayList<String> landData) {
 		ColoredLandRent rent = new ColoredLandRent(Integer.parseInt(getValueAt(landData, 3)));
@@ -143,6 +130,19 @@ public class BoardFactory {
 
 	private static String getValueAt(ArrayList<String> landData, int index) {
 		return landData.get(index);
+	}
+	
+	private static Rent getTransportationLandRentInfo(ArrayList<String> landData) {
+		TransportationRent rent = new TransportationRent(
+				Integer.parseInt(getValueAt(landData, 3)));
+		return rent;
+	}
+
+	private static Rent getInfrastructureLandRentInfo(ArrayList<String> landData) {
+		InfrastructureRent rent = new InfrastructureRent(
+				Integer.parseInt(getValueAt(landData, 3)),
+				Integer.parseInt(getValueAt(landData, 4)));
+		return rent;
 	}
 
 }
