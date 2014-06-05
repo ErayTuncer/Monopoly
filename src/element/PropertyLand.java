@@ -40,5 +40,9 @@ public abstract class PropertyLand extends Land {
 		return rentInfo;
 	}
 	
-	public abstract int acceptVisitor(RentCalculator calculator);
+	public final int getMortgage() {
+		return this.price / 2;
+	}
+	
+	public abstract int acceptCalculator(RentCalculator calculator);
 }
