@@ -43,7 +43,7 @@ public class BoardScreen extends JPanel implements ResetableComponent {
 			tileCoordinates[i][1] = yPos;
 			
 			if (i + 1 % 10 == 0 || i % 10 == 0) {
-				slideAmount = 76;
+				slideAmount = 72;
 			} else {
 				slideAmount = 58;
 			}

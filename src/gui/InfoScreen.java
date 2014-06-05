@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Controller;
+import element.DicePair;
 import element.Game;
 import gui.button.CommandButton;
 import gui.button.EndTurnButton;
@@ -12,13 +13,14 @@ import gui.button.RollDiceButton;
 
 @SuppressWarnings("serial")
 public class InfoScreen extends JPanel implements ResetableComponent {
-	
+
 	private Game game;
-	
+
 	private JLabel playerName;
 	private JLabel playerBalance;
+	private JLabel dice;
 	private CommandButton[] buttons;
-	
+
 	public InfoScreen(Controller controller) {
 		game = controller.getGame();
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -26,28 +28,32 @@ public class InfoScreen extends JPanel implements ResetableComponent {
 
 		initLabels();
 		initButtons(controller);
+
 		reset();
 	}
 
 	private void initLabels() {
 		playerName = new JLabel();
 		playerBalance = new JLabel();
+		dice = new JLabel();
 
 		playerName.setAlignmentX(CENTER_ALIGNMENT);
 		playerBalance.setAlignmentX(CENTER_ALIGNMENT);
-		
+		dice.setAlignmentX(CENTER_ALIGNMENT);
+
 		add(playerName);
 		add(playerBalance);
+		add(dice);
 	}
 
-	private void initButtons(Controller controller){
+	private void initButtons(Controller controller) {
 		buttons = new CommandButton[2];
 		buttons[0] = new RollDiceButton(controller);
-		buttons[1] = new EndTurnButton(controller);		
-		
+		buttons[1] = new EndTurnButton(controller);
+
 		for (CommandButton button : buttons) {
 			button.setAlignmentX(CENTER_ALIGNMENT);
-			add(button);		
+			add(button);
 		}
 	}
 
@@ -55,9 +61,19 @@ public class InfoScreen extends JPanel implements ResetableComponent {
 	public void reset() {
 		playerName.setText("Name : " + game.getCurrentPlayer().getName());
 		playerBalance.setText("Balance : " + game.getCurrentPlayer().getBalance());
+		setDiceText();
 		for (ResetableComponent button : buttons) {
 			button.reset();
 		}
 	}
-	
+
+	private void setDiceText() {
+		try {
+			dice.setText(String.format("Dice : %d - %d", DicePair.getCurrent()[0], DicePair.getCurrent()[1]));
+		} catch (Exception e) {
+			dice.setText("Dice : " + 0 + " - " + 0);
+		}
+
+	}
+
 }
