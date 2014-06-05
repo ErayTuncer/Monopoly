@@ -77,9 +77,9 @@ public class BoardScreen extends JPanel implements ResetableComponent {
 	}
 
 	private void addCircle() {
-		Icon circleIcon = new ImageIcon("assets/circle.gif");
+		Icon circleIcon = new ImageIcon("assets/a.gif");
 		circle = new JLabel(circleIcon);
-		circle.setBounds(900, 900, 50, 50);
+		circle.setBounds(626, 621, 50, 50);
 		add(circle);
 	}
 
