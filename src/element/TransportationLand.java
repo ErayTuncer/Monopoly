@@ -1,7 +1,7 @@
 package element;
 
+import util.RentCalculator;
 import command.AskBuyCommand;
-
 import behaviour.ConstructionAllowance;
 
 public class TransportationLand extends PropertyLand {
@@ -10,6 +10,11 @@ public class TransportationLand extends PropertyLand {
 		super(name, price, rent);
 		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_DENIED);
 		setAssignment(new AskBuyCommand());
+	}
+
+	@Override
+	public int acceptVisitor(RentCalculator calculator) {
+		return calculator.calculate(this);
 	}
 
 }

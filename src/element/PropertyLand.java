@@ -1,5 +1,7 @@
 package element;
 
+import util.RentCalculator;
+
 
 public abstract class PropertyLand extends Land {
 
@@ -38,4 +40,5 @@ public abstract class PropertyLand extends Land {
 		return rentInfo;
 	}
 	
+	public abstract int acceptVisitor(RentCalculator calculator);
 }
