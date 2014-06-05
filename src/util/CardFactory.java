@@ -25,15 +25,15 @@ public abstract class CardFactory {
 	private static final String CARD_CHANCE = "Chance";
 	private static final String CARD_COMMUNITYCHEST = "CommunityChest";
 
-	public ArrayList<Card> readChanceCards(File file) {
+	public static ArrayList<Card> readChanceCards(File file) {
 		return readCards(file, CARD_CHANCE);
 	}
 
-	public ArrayList<Card> readCommunityCards(File file) {
+	public static ArrayList<Card> readCommunityCards(File file) {
 		return readCards(file, CARD_COMMUNITYCHEST);
 	}
 	
-	private ArrayList<Card> readCards(File file, String cardType) {
+	private static ArrayList<Card> readCards(File file, String cardType) {
 		ArrayList<Card> cards = new ArrayList<Card>();
 		
 		try {
@@ -57,7 +57,7 @@ public abstract class CardFactory {
 		return null;
 	}
 	
-	private void addCard(ArrayList<Card> cards, ArrayList<String> cardData) {
+	private static void addCard(ArrayList<Card> cards, ArrayList<String> cardData) {
 		Card card = new Card();
 		card.text = getCardText(cardData);
 		card.command = getCardCommand(cardData);
@@ -74,15 +74,15 @@ public abstract class CardFactory {
 		return cardData;
 	}
 
-	private String getCardType(ArrayList<String> cardData) {
+	private static String getCardType(ArrayList<String> cardData) {
 		return getValueAt(cardData, 0);
 	}
 	
-	private String getCardText(ArrayList<String> cardData) {
+	private static String getCardText(ArrayList<String> cardData) {
 		return getValueAt(cardData, 1);
 	}
 
-	private Command getCardCommand(ArrayList<String> cardData) {
+	private static Command getCardCommand(ArrayList<String> cardData) {
 		String commandTitle = getValueAt(cardData, 2);
 		if (commandTitle.equals(COMMAND_GETPRIZE)) {
 			return new GetPrizeCommand(Integer.parseInt(getValueAt(cardData, 3)));
