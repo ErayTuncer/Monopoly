@@ -9,9 +9,9 @@ import element.PropertyLand;
 public class PayRentCommand extends PayCommand {	
 
 	@Override
-	protected int getPaymentAmount(Land land) {
-		PropertyLand property =  (PropertyLand) land;
-		return RentCalculator.calculate(property);
+	protected int getPaymentAmount(Land land, Game game) {
+		PropertyLand property = (PropertyLand) land;
+		return property.acceptVisitor(new RentCalculator(game));
 	}
 
 	@Override
@@ -20,7 +20,6 @@ public class PayRentCommand extends PayCommand {
 		Player target = game.getOwner((PropertyLand) getCurrentLand(game));
 		source.decreaseBalance(paymentAmount);
 		target.increaseBalance(paymentAmount);
-		
 	}
 
 }
