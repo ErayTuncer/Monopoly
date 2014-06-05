@@ -53,12 +53,9 @@ public class Controller {
 		}
 	}
 
-	public void nextTurn() {
+	public void endTurn() {
 		int newPlayerIndex = (game.getPlayers().indexOf(game.getCurrentPlayer()) + 1) % game.getPlayers().size();
 		game.setCurrentPlayer(game.getPlayers().get(newPlayerIndex));
-		
-		DicePair.roll();
-		movePlayer(game.getCurrentPlayer(), DicePair.getDiceValue());
 	}
 	
 	public void execute(Command command) {
