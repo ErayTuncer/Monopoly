@@ -6,7 +6,7 @@ public class GoJailCommand implements Command {
 
 	@Override
 	public void execute(Controller controller) {
-		(new MoveLandCommand("Jail")).execute(controller);
+		(new MoveBackwardCommand(20)).execute(controller);
 		//TODO
 
 	}
