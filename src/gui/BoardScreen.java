@@ -33,20 +33,27 @@ public class BoardScreen extends JPanel {
 
 	private void addTiles() {
 		tileCoordinates = new int[40][2];
-		int xPos = 630;
-		int yPos = 630;
+		int xPos = 636;
+		int yPos = 635;
+		int slideAmount = 58;
 		for (int i = 0; i < tileCoordinates.length; i++) {
 			tileCoordinates[i][0] = xPos;
 			tileCoordinates[i][1] = yPos;
+			
+			if (i + 1 % 10 == 0 || i % 10 == 0) {
+				slideAmount = 76;
+			} else {
+				slideAmount = 58;
+			}
 
 			if (0 <= i && i < 10) {
-				xPos -= 60;
+				xPos -= slideAmount;
 			} else if (10 <= i && i < 20) {
-				yPos -= 60;
+				yPos -= slideAmount;
 			} else if (20 <= i && i < 30) {
-				xPos += 60;
+				xPos += slideAmount;
 			} else if (30 <= i && i < 40) {
-				yPos += 60;
+				yPos += slideAmount;
 			} else {
 				throw new RuntimeException("Too many tiles");
 			}
@@ -56,11 +63,9 @@ public class BoardScreen extends JPanel {
 	private void addTokens() {
 		ArrayList<Player> players = game.getPlayers();
 		for (Player player : players) {
-			//TODO get players' own token image
-			Image tokenImage = new ImageIcon("assets/yuksuk.png").getImage();
-			tokenImage = tokenImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+			Image tokenImage = player.getToken().getImage();
 			JLabel token = new JLabel(new ImageIcon(tokenImage));
-			token.setBounds(tileCoordinates[0][0], tileCoordinates[0][1],40,40);
+			token.setBounds(tileCoordinates[0][0], tileCoordinates[0][1], 30, 22);
 			tokens.add(token);
 			add(token);
 		}
@@ -76,22 +81,12 @@ public class BoardScreen extends JPanel {
 	}
 
 	public void update() {
-		//TODO
-	/*	ArrayList<Player> players = game.getPlayers();
-		
-		
-		for (Player player : players) {
-			Image tokenImage = new ImageIcon("assets/yuksuk.png").getImage();
-			tokenImage = tokenImage.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-			JLabel token = new JLabel(new ImageIcon(tokenImage));
-			
-			int landIndex = player.getToken().getLandIndex() % tileCoordinates.length;
-			token.setLocation(tileCoordinates[landIndex][0], tileCoordinates[landIndex][1]);
-			
-			repaint();
-			revalidate();
-			add(token);
-		}*/
+		int tokenID = game.getCurrentPlayer().getPlayerID();
+		int tokenTile = game.getCurrentPlayer().getToken().getLandIndex() % 40; 
+		tokens.get(tokenID).setLocation(tileCoordinates[tokenTile][0], tileCoordinates[tokenTile][1]);
+		repaint();
+		revalidate();
+
 	}
 
 }

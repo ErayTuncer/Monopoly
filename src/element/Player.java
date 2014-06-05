@@ -10,10 +10,10 @@ public class Player {
 	private Token token;
 
 	public Player(int playerID, String playerName) {
-		this.token = new Token();
 		this.playerID = playerID;
 		this.playerName = playerName;
 		this.playerBalance = Game.INITIAL_PAYMENT;
+		this.token = new Token(playerID);
 	}
 
 	public String getName() {
