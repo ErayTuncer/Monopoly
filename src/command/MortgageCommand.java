@@ -2,8 +2,6 @@ package command;
 
 import javax.swing.JOptionPane;
 
-import com.sun.org.apache.bcel.internal.generic.LAND;
-
 import controller.Controller;
 import element.Player;
 import element.PropertyLand;
@@ -38,15 +36,24 @@ public class MortgageCommand implements Command {
 			player.increaseBalance(property.getMortgage());
 			JOptionPane.showMessageDialog(null, property.getName() + " is mortgaged for " + property.getMortgage() + "K");
 		} else {
-			JOptionPane.showMessageDialog(null, "Mortgage canceled");
+			JOptionPane.showMessageDialog(null, "Mortgage canceled.");
 		}
-		
 		
 	}
 
 	private void askUnmortgage(Player player, PropertyLand property2) {
-		// TODO Auto-generated method stub
+		String title = player.getName();
+		String message = "Do you want to UNmortgage " + property + " for " + property.getMortgage() + "K ?";
+		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
 		
+		if(reply == JOptionPane.YES_OPTION) {
+			player.getProperties().add(property);
+			player.getMortgagedProperties().remove(property);
+			player.decreaseBalance(property.getMortgage());
+			JOptionPane.showMessageDialog(null, property.getName() + " is UNmortgaged for " + property.getMortgage() + "K");
+		} else {
+			JOptionPane.showMessageDialog(null, "UNmortgage canceled.");
+		}
 	}
 
 }
