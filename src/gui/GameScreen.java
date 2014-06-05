@@ -1,59 +1,55 @@
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.Component;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import controller.Controller;
 import element.Game;
 
-public class GameScreen extends JFrame {
+public class GameScreen extends JFrame implements ResetableComponent {
+	
 	private final int HEIGHT = 730;
 	private final int WIDTH = 906;
 	private Game game;
+	
+	private ResetableComponent[] components;
+	
+	public GameScreen(Controller controller) {
+		initialize(controller);
 
-	public GameScreen(Game game) {
-		initialize(game);
-
-		add(addContentPanel());
+		addContentPanel(controller);
 		repaint();
 		revalidate();
 		setVisible(true);
 	}
 
-	private void initialize(Game game) {
-		this.game = game;
+	private void initialize(Controller controller) {
+		this.game = controller.getGame();
 		setTitle("Monopoly");
 		setSize(WIDTH, HEIGHT);
 		setResizable(false);
-		setLayout(new BorderLayout());
+		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	private JPanel addContentPanel() {
-		JPanel contentPanel = createContentPanel();
+	private void addContentPanel(Controller controller) {
+		BoardScreen boardScreen = new BoardScreen(controller);
+		add(boardScreen);
 
-		BoardScreen boardScreen = new BoardScreen(game);
-		contentPanel.add(boardScreen, BorderLayout.WEST);
-
-		InfoScreen infoScreen = new InfoScreen(game);
-		contentPanel.add(infoScreen, BorderLayout.EAST);
-
-		return contentPanel;
+		InfoScreen infoScreen = new InfoScreen(controller);
+		add(infoScreen);
+		
+		components = new ResetableComponent[2];	
+		components[0] = boardScreen;
+		components[1] = infoScreen;
 	}
-
-	private JPanel createContentPanel() {
-		JPanel contentPanel = new JPanel();
-		contentPanel.setBounds(0, 0, 730, 906);
-		contentPanel.setLayout(null);
-		contentPanel.setVisible(true);
-		return contentPanel;
+	
+	@Override
+	public void reset() {
+		for (ResetableComponent component : components) {
+			component.reset();
+		}
 	}
-
-	// Test Purpose
-	public static void main(String[] args) {
-		new GameScreen(new Controller().getGame());
-	}
+	
 }

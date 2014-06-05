@@ -9,6 +9,7 @@ public class RollDiceCommand implements Command {
 	public void execute(Controller controller) {
 		DicePair.roll();
 		movePlayer(controller);
+		controller.update();
 	}
 	
 	private void movePlayer(Controller controller) {

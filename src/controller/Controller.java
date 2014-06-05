@@ -10,6 +10,7 @@ import element.DicePair;
 import element.Game;
 import element.Player;
 import element.Token;
+import gui.GameScreen;
 import ui.UserIO;
 import util.BoardFactory;
 
@@ -21,6 +22,7 @@ public class Controller {
 	}
 	
 	private Game game;
+	private GameScreen gameFrame;
 	private String boardFilePath = "assets/gameBoard.txt";
 	
 	public Controller() {
@@ -42,31 +44,16 @@ public class Controller {
 	}
 
 	private void start() {
-		update();
-	}
-	
-	public void update() {
-		if(!game.hasWinner()) {
-			UserIO.displayCurrentStatusOf(game);
-			
-			UserIO.displayOptionsOf(game);
-		}
+		gameFrame = new GameScreen(this);
+		gameFrame.setVisible(true);
 	}
 
-	public void endTurn() {
-		int newPlayerIndex = (game.getPlayers().indexOf(game.getCurrentPlayer()) + 1) % game.getPlayers().size();
-		game.setCurrentPlayer(game.getPlayers().get(newPlayerIndex));
+	 public void update() {
+		gameFrame.reset();
 	}
 	
 	public void execute(Command command) {
 		command.execute(this);
-	}
-
-	private void movePlayer(Player player, int diceValue) {
-		Token token = player.getToken();
-		int newLocation = (token.getLandIndex() + diceValue)
-									% game.getBoard().getSize();
-		token.setLocation(newLocation);
 	}
 
 	public Game getGame() {

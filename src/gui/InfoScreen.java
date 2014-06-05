@@ -1,55 +1,63 @@
 package gui;
 
-import java.awt.event.ActionListener;
-
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.Controller;
 import element.Game;
+import gui.button.CommandButton;
+import gui.button.EndTurnButton;
+import gui.button.RollDiceButton;
 
 @SuppressWarnings("serial")
-public class InfoScreen extends JPanel {
+public class InfoScreen extends JPanel implements ResetableComponent {
+	
 	private Game game;
-	private String[] buttons = { "Buy", "Sell" };
-	private ActionListener[] listeners = { null, null/*new BuyButtonListener(), new SellButtonListener() */ };
-
-	public InfoScreen(Game game) {
-		initialize(game);
-
-		addLabels();
-		addButtons();
-	}
-
-	private void initialize(Game game) {
-		this.game = game;
+	
+	private JLabel playerName;
+	private JLabel playerBalance;
+	private CommandButton[] buttons;
+	
+	public InfoScreen(Controller controller) {
+		game = controller.getGame();
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBounds(700, 0, 200, 700);
+
+		initLabels();
+		initButtons(controller);
+		reset();
 	}
 
-	private void addLabels() {
-		String name = "Player: " + game.getCurrentPlayer().getName();
-		add(createLabel(name));
+	private void initLabels() {
+		playerName = new JLabel();
+		playerBalance = new JLabel();
 
-		String balance = "Balance: " + game.getCurrentPlayer().getBalance();
-		add(createLabel(balance));
+		playerName.setAlignmentX(CENTER_ALIGNMENT);
+		playerBalance.setAlignmentX(CENTER_ALIGNMENT);
+		
+		add(playerName);
+		add(playerBalance);
 	}
 
-	private JLabel createLabel(String text) {
-		JLabel label = new JLabel(text);
-		label.setAlignmentX(CENTER_ALIGNMENT);
-		return label;
-	}
-
-	private void addButtons(){
-		for (int i = 0; i < listeners.length; i++) {
-			JButton button = new JButton(buttons[i]);
-			button.addActionListener(listeners[i]);
+	private void initButtons(Controller controller){
+		buttons = new CommandButton[2];
+		buttons[0] = new RollDiceButton(controller);
+		buttons[1] = new EndTurnButton(controller);		
+		
+		for (CommandButton button : buttons) {
 			button.setAlignmentX(CENTER_ALIGNMENT);
 			add(button);		
 		}
 	}
-	
+
+	@Override
+	public void reset() {
+		playerName.setText("Name : " + game.getCurrentPlayer().getName());
+		playerBalance.setText("Balance : " + game.getCurrentPlayer().getBalance());
+		for (ResetableComponent button : buttons) {
+			button.reset();
+		}
+	}
 	
 }

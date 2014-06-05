@@ -7,24 +7,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.Controller;
 import element.Game;
 import element.Player;
 
 @SuppressWarnings("serial")
-public class BoardScreen extends JPanel {
+public class BoardScreen extends JPanel implements ResetableComponent {
 	private int[][] tileCoordinates;
 	private Game game;
 	private ArrayList<JLabel> tokens;
 
-	public BoardScreen(Game game) { // TODO
-		initialize(game);
+	public BoardScreen(Controller controller) { // TODO
+		initialize(controller);
 		addTiles();
 		addTokens();
 		addBoardImage();
 	}
 
-	private void initialize(Game game) {
-		this.game = game;
+	private void initialize(Controller controller) {
+		this.game = controller.getGame();
 		this.tokens = new ArrayList<>();
 		setFocusable(true);
 		setLayout(null);
@@ -87,6 +88,11 @@ public class BoardScreen extends JPanel {
 		repaint();
 		revalidate();
 
+	}
+
+	@Override
+	public void reset() {
+		update();
 	}
 
 }
