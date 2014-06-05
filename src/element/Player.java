@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Player {
 	private ArrayList<Card> cardsOwned;
 	private ArrayList<PropertyLand> propertiesOwned;
+	private ArrayList<PropertyLand> propertiesMorgaged;
 	private int playerID, playerBalance;
 	private String playerName;
 	private Token token;
@@ -14,6 +15,7 @@ public class Player {
 		this.playerName = playerName;
 		this.playerBalance = Game.INITIAL_PAYMENT;
 		this.propertiesOwned = new ArrayList<PropertyLand>();
+		this.propertiesMorgaged = new ArrayList<PropertyLand>();
 		this.token = new Token(playerID);
 	}
 
@@ -51,6 +53,10 @@ public class Player {
 		
 	public void discardProperty(Land land) {
 		this.propertiesOwned.remove(land);
+	}
+	
+	public ArrayList<PropertyLand> getMorgagedProperties() {
+		return propertiesMorgaged;
 	}
 
 	public void addCard(Card card) {

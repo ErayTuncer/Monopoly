@@ -14,11 +14,9 @@ public class Bank {
 	
 	private ArrayList<House> houses;
 	private  ArrayList<Hotel> hotels;
-	private ArrayList<PropertyLand> mortgagedLand;
 	
 	public Bank(ArrayList<PropertyLand> propertyLands){
 		this.propertyLands = propertyLands;
-		this.mortgagedLand = new ArrayList<PropertyLand>();
 		initBuildings();
 	}
 	
