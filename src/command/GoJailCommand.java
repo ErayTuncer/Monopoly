@@ -6,7 +6,8 @@ public class GoJailCommand implements Command {
 
 	@Override
 	public void execute(Controller controller) {
-		// TODO Auto-generated method stub
+		(new MoveLandCommand("Jail")).execute(controller);
+		//TODO
 
 	}
 
