@@ -37,7 +37,7 @@ public class AskBuyCommand implements Command {
 			land.setAssignment(new PayRentCommand());
 			display(player.getName() + " owned " + land.getName(), controller);
 		} else {
-			display("Purchase of " + land.getName() + "denied", controller);
+			display("Purchase of " + land.getName() + " denied", controller);
 		}
 	}
 

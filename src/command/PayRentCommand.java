@@ -26,9 +26,11 @@ public class PayRentCommand implements Command {
 	private void makeTransaction(Game game, int payment) {
 		Player source = game.getCurrentPlayer();
 		Player target = game.getOwner((PropertyLand) getCurrentLand(game));
-		source.decreaseBalance(payment);
-		target.increaseBalance(payment);
-		JOptionPane.showMessageDialog(null, source.getName() + " paid " + payment + " to " + target.getName());
+		if(!source.equals(target)) {
+			source.decreaseBalance(payment);
+			target.increaseBalance(payment);
+			JOptionPane.showMessageDialog(null, source.getName() + " paid " + payment + "K to " + target.getName());
+		}
 	}
 
 
