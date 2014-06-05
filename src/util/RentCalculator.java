@@ -42,9 +42,8 @@ public class RentCalculator {
 		for (Player player : game.getPlayers()) {
 			if(!player.equals(game.getOwner(land))) {
 				for (PropertyLand property : player.getProperties()) {
-					if(property instanceof ColoredLand)
-						if(hasSameColor(land, (ColoredLand) property))
-							return false;
+					if(property instanceof ColoredLand && hasSameColor(land, (ColoredLand) property))
+						return false;
 				}
 			}
 		}
@@ -53,9 +52,8 @@ public class RentCalculator {
 
 	private boolean checkBank(ColoredLand land) {
 		for (PropertyLand property : game.getBank().getProperties()) {
-			if(property instanceof ColoredLand)
-				if(hasSameColor(land, (ColoredLand) property))
-					return false;
+			if(property instanceof ColoredLand && hasSameColor(land, (ColoredLand) property))
+				return false;
 		}
 		return true;
 	}
