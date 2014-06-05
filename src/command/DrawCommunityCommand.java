@@ -1,13 +1,15 @@
 package command;
 
-import controller.Controller;
+import java.util.ArrayList;
 
-public class DrawCommunityCommand implements Command {
+import controller.Controller;
+import element.Card;
+
+public class DrawCommunityCommand extends DrawCardCommand {
 
 	@Override
-	public void execute(Controller controller) {
-		// TODO Auto-generated method stub
-
+	protected ArrayList<Card> getCards(Controller controller) {
+		return controller.getGame().getBank().getCommunityCards();
 	}
 
 }

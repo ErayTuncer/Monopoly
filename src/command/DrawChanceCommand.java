@@ -5,21 +5,11 @@ import java.util.ArrayList;
 import controller.Controller;
 import element.Card;
 
-public class DrawChanceCommand implements Command {
+public class DrawChanceCommand extends DrawCardCommand {
 
 	@Override
-	public void execute(Controller controller) {
-		ArrayList<Card> chanceCards = controller.getGame().getBank().getChanceCards();
-		Card drawnCard = chanceCards.remove(0);
-		
-		displayText(drawnCard.text);
-		drawnCard.command.execute(controller);
-		
-		chanceCards.add(drawnCard);
-	}
-
-	private void displayText(String text) {
-		// TODO Auto-generated method stub
+	protected ArrayList<Card> getCards(Controller controller) {
+		return controller.getGame().getBank().getChanceCards();
 	}
 
 }
