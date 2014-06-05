@@ -1,13 +1,16 @@
 package element;
 
+import command.PayFeeCommand;
+
 import behaviour.ConstructionAllowance;
 
 public class PayTax extends SpecialLand {
 	private int taxAmount;
 	
 	public PayTax(int taxAmount) {
-		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_DENIED);
 		this.taxAmount = taxAmount;
+		setConstructionBehavior(ConstructionAllowance.CONSTRUCTION_DENIED);
+		setAssignment(new PayFeeCommand(taxAmount));
 	}
 	
 	public int getTaxAmount(){
