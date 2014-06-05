@@ -19,7 +19,8 @@ public class InfoScreen extends JPanel implements ResetableComponent {
 	private JLabel playerName;
 	private JLabel playerBalance;
 	private JLabel dice;
-	private CommandButton[] buttons;
+	
+	private ButtonDirector director;
 
 	public InfoScreen(Controller controller) {
 		game = controller.getGame();
@@ -47,11 +48,8 @@ public class InfoScreen extends JPanel implements ResetableComponent {
 	}
 
 	private void initButtons(Controller controller) {
-		buttons = new CommandButton[2];
-		buttons[0] = new RollDiceButton(controller);
-		buttons[1] = new EndTurnButton(controller);
-
-		for (CommandButton button : buttons) {
+		director = new ButtonDirector(controller);
+		for (CommandButton button : director.getButtons()) {
 			button.setAlignmentX(CENTER_ALIGNMENT);
 			add(button);
 		}
@@ -62,7 +60,7 @@ public class InfoScreen extends JPanel implements ResetableComponent {
 		playerName.setText("Name : " + game.getCurrentPlayer().getName());
 		playerBalance.setText("Balance : " + game.getCurrentPlayer().getBalance());
 		setDiceText();
-		for (ResetableComponent button : buttons) {
+		for (ResetableComponent button : director.getButtons()) {
 			button.reset();
 		}
 	}
