@@ -8,7 +8,7 @@ import element.Player;
 public class PayTaxCommand extends PayCommand {
 
 	@Override
-	protected int getPaymentAmount(Land land) {
+	protected int getPaymentAmount(Land land, Game game) {
 		PayTax payTax = (PayTax) land;
 		return payTax.getTaxAmount();
 	}
