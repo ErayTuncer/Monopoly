@@ -23,7 +23,7 @@ public class AskBuyCommand implements Command {
 	}
 
 	private int getReply(Controller controller, PropertyLand land) {
-		String message = "Do you want to buy " + land.toString() + " for " + land.getPrice() + "K ?";
+		String message = "Do you want to buy " + land.getName() + " for " + land.getPrice() + "K ?";
 		String title = controller.getGame().getCurrentPlayer().getName();
 		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
 		return reply;
@@ -35,7 +35,7 @@ public class AskBuyCommand implements Command {
 			player.decreaseBalance(land.getPrice());
 			player.addProperty(land);
 			land.setAssignment(new PayRentCommand());
-			display(player.getName() + "owned " + land.getName(), controller);
+			display(player.getName() + " owned " + land.getName(), controller);
 		} else {
 			display("Purchase of " + land.getName() + "denied", controller);
 		}

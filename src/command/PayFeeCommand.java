@@ -17,7 +17,7 @@ public class PayFeeCommand implements Command {
 	public void execute(Controller controller) {
 		Player player = controller.getGame().getCurrentPlayer();
 		player.decreaseBalance(fee);
-		JOptionPane.showMessageDialog(null, "You paid : " + fee);
+		JOptionPane.showMessageDialog(null, "You paid : " + fee + "K");
 	}
 
 }
