@@ -12,12 +12,12 @@ public abstract class PayCommand implements Command {
 		
 		Land land = getCurrentLand(game);
 		
-		int paymentAmount = getPaymentAmount(land);
+		int paymentAmount = getPaymentAmount(land, game);
 		
 		makeTransaction(game, paymentAmount);
 	}
 
-	protected abstract int getPaymentAmount(Land land);
+	protected abstract int getPaymentAmount(Land land, Game game);
 
 	protected Land getCurrentLand(Game game) {
 		return game.getBoard().getLands().get(game.getCurrentPlayer().getToken().getLandIndex());
