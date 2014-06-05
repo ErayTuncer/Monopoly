@@ -15,7 +15,7 @@ public class PayRentCommand implements Command {
 	public void execute(Controller controller) {
 		Game game = controller.getGame();
 		PropertyLand property = (PropertyLand) getCurrentLand(game);
-		int payment = property.acceptVisitor(new RentCalculator(game));
+		int payment = property.acceptCalculator(new RentCalculator(game));
 		makeTransaction(game, payment);
 	}
 

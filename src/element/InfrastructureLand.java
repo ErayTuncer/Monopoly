@@ -14,7 +14,7 @@ public class InfrastructureLand extends PropertyLand {
 	}
 
 	@Override
-	public int acceptVisitor(RentCalculator calculator){
+	public int acceptCalculator(RentCalculator calculator){
 		return calculator.calculate(this);
 	}
 
