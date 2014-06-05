@@ -18,8 +18,9 @@ public class BoardFactory {
 	private static final String LAND_PAYTAX = "PayTax";
 	private static final String LAND_CHANCE = "Chance";
 	private static final String LAND_COMMUNITYCHEST = "CommunityChest";
-
 	private static final String LAND_COLOREDLAND = "ColoredLand";	
+	private static final String LAND_TRANSPORTATION = "Transportation";
+	private static final String LAND_INFRASTRUCTURE = "Infrastructure";
 	
 	public static Board readBoard(File file) {
 		Board board = new Board();
@@ -69,11 +70,25 @@ public class BoardFactory {
 		} else if (landType.equals(LAND_COMMUNITYCHEST)) {
 			board.getLands().add(new CommunityChest());
 		} else if (landType.equals(LAND_COLOREDLAND)) {
-			board.getLands().add(new ColoredLand(getLandName(landData), getLandColor(landData), getLandPrice(landData), getHousePrice(landData), getRentInfo(landData)));
+			board.getLands().add(new ColoredLand(getLandName(landData), getLandColor(landData), getLandPrice(landData), getHousePrice(landData), getColoredLandRentInfo(landData)));
+		} else if (landType.equals(LAND_TRANSPORTATION)) {
+			board.getLands().add(new TransportationLand(getLandName(landData), getLandPrice(landData), getLandRentInfo(landData)));
+		} else if (landType.equals(LAND_INFRASTRUCTURE)) {
+			board.getLands().add(new InfrastructureLand(getLandName(landData), getLandPrice(landData), getInfrastructureLandRentInfo(landData)));
 		} else {
 			throw new RuntimeException("There is no land type named : " + landType);
 		}
 		
+	}
+
+	private static Rent getLandRentInfo(ArrayList<String> landData) {
+		TransportationRent rent = new TransportationRent(Integer.parseInt(getValueAt(landData, 3)));
+		return rent;
+	}
+	
+	private static Rent getInfrastructureLandRentInfo(ArrayList<String> landData) {
+		InfrastructureRent rent = new InfrastructureRent(Integer.parseInt(getValueAt(landData, 3)),0);
+		return rent;
 	}
 
 	private static String getLandName(ArrayList<String> landData) {
@@ -96,7 +111,7 @@ public class BoardFactory {
 		return housePrice;
 	}
 
-	private static Rent getRentInfo(ArrayList<String> landData) {
+	private static Rent getColoredLandRentInfo(ArrayList<String> landData) {
 		ColoredLandRent rent = new ColoredLandRent(Integer.parseInt(getValueAt(landData, 3)));
 		rent.setHouseRent(1, Integer.parseInt(getValueAt(landData, 5)));
 		rent.setHouseRent(2, Integer.parseInt(getValueAt(landData, 6)));
