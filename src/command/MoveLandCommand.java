@@ -23,4 +23,9 @@ public class MoveLandCommand extends MoveTokenCommand {
 		throw new RuntimeException("Land Name NOT found.");
 	}
 
+	@Override
+	public boolean isForward() {
+		return true;
+	}
+
 }

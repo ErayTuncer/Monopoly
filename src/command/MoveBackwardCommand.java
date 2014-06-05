@@ -18,5 +18,10 @@ public class MoveBackwardCommand extends MoveTokenCommand {
 		int movedIndex = ((currentIndex - stepBackward) + game.getBoard().getLands().size()) % game.getBoard().getSize();
 		return movedIndex;
 	}
+
+	@Override
+	public boolean isForward() {
+		return false;
+	}
 	
 }

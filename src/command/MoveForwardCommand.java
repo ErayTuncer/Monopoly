@@ -19,4 +19,9 @@ public class MoveForwardCommand extends MoveTokenCommand {
 		return movedIndex;
 	}
 
+	@Override
+	public boolean isForward() {
+		return true;
+	}
+
 }
