@@ -15,7 +15,7 @@ public class MoveBackwardCommand extends MoveTokenCommand {
 	public int getLandIndex(Controller controller) {
 		Game game = controller.getGame();
 		int currentIndex = game.getCurrentPlayer().getToken().getLandIndex();
-		int movedIndex = ((currentIndex - stepBackward) + game.getBoard().getLands().size()) % game.getBoard().getLands().size();
+		int movedIndex = ((currentIndex - stepBackward) + game.getBoard().getLands().size()) % game.getBoard().getSize();
 		return movedIndex;
 	}
 	

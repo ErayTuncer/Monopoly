@@ -15,7 +15,7 @@ public class MoveForwardCommand extends MoveTokenCommand {
 	public int getLandIndex(Controller controller) {
 		Game game = controller.getGame();
 		int currentIndex = game.getCurrentPlayer().getToken().getLandIndex();
-		int movedIndex = (currentIndex + stepForward) % game.getBoard().getLands().size();
+		int movedIndex = (currentIndex + stepForward) % game.getBoard().getSize();
 		return movedIndex;
 	}
 

@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Controller;
+import element.DicePair;
 import element.Game;
 import element.Player;
 
@@ -83,11 +84,13 @@ public class BoardScreen extends JPanel implements ResetableComponent {
 
 	public void update() {
 		int tokenID = game.getCurrentPlayer().getPlayerID();
-		int tokenTile = game.getCurrentPlayer().getToken().getLandIndex() % 40; 
+		int tokenTile = game.getCurrentPlayer().getToken().getLandIndex() % game.getBoard().getSize(); 
 		tokens.get(tokenID).setLocation(tileCoordinates[tokenTile][0], tileCoordinates[tokenTile][1]);
 		repaint();
 		revalidate();
-
+		
+		System.out.println("Dice : " + DicePair.getDiceValue());
+		System.out.println("Player : " + game.getCurrentPlayer().getName() + "  -  index : " + game.getCurrentPlayer().getToken().getLandIndex());
 	}
 
 	@Override
