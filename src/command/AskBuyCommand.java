@@ -37,8 +37,8 @@ public class AskBuyCommand implements Command {
 		}
 	}
 
-	private void display(String string, Controller controller) {
-		(new LogInfoCommand(string)).execute(controller);
+	private void display(String info, Controller controller) {
+		JOptionPane.showMessageDialog(null, info);
 	}
 
 }
