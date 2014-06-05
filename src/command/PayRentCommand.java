@@ -1,25 +1,36 @@
 package command;
 
+import javax.swing.JOptionPane;
+
+import controller.Controller;
 import util.RentCalculator;
 import element.Game;
 import element.Land;
 import element.Player;
 import element.PropertyLand;
 
-public class PayRentCommand extends PayCommand {	
+public class PayRentCommand implements Command {	
 
 	@Override
-	protected int getPaymentAmount(Land land, Game game) {
-		PropertyLand property = (PropertyLand) land;
-		return property.acceptVisitor(new RentCalculator(game));
+	public void execute(Controller controller) {
+		Game game = controller.getGame();
+		PropertyLand property = (PropertyLand) getCurrentLand(game);
+		int payment = property.acceptVisitor(new RentCalculator(game));
+		makeTransaction(game, payment);
 	}
 
-	@Override
-	protected void makeTransaction(Game game, int paymentAmount) {
+	protected Land getCurrentLand(Game game) {
+		return game.getBoard().getLands().get(game.getCurrentPlayer().getToken().getLandIndex());
+	}
+
+	private void makeTransaction(Game game, int payment) {
 		Player source = game.getCurrentPlayer();
 		Player target = game.getOwner((PropertyLand) getCurrentLand(game));
-		source.decreaseBalance(paymentAmount);
-		target.increaseBalance(paymentAmount);
+		source.decreaseBalance(payment);
+		target.increaseBalance(payment);
+		JOptionPane.showMessageDialog(null, source.getName() + " paid " + payment + " to " + target.getName());
 	}
+
+
 
 }
