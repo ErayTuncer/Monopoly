@@ -11,6 +11,7 @@ public abstract class MoveTokenCommand implements Command {
 		
 		Token token = controller.getGame().getCurrentPlayer().getToken();
 		token.setLocation(landIndex);
+
 	}
 
 	public abstract int getLandIndex(Controller controller);
