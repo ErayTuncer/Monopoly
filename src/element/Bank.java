@@ -81,6 +81,8 @@ public class Bank {
 		return chanceCards;
 	}
 	
-	
+	public ArrayList<PropertyLand> getProperties() {
+		return propertyLands;
+	}
 	
 }
