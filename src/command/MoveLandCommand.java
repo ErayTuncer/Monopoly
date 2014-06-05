@@ -6,16 +6,21 @@ import element.Land;
 
 public class MoveLandCommand extends MoveTokenCommand {
 	
-	private Land land;
+	private String landName;
 	
-	public MoveLandCommand(Land land) {
-		this.land = land;
+	public MoveLandCommand(String landName) {
+		this.landName = landName;
 	}
 
 	@Override
 	public int getLandIndex(Controller controller) {
 		Board board = controller.getGame().getBoard();
-		return board.getLands().indexOf(land);
+		for (Land land : board.getLands()) {
+			if (land.getName().equals(landName)) {
+				return board.getLands().indexOf(land);
+			}
+		}
+		throw new RuntimeException("Land Name NOT found.");
 	}
 
 }
