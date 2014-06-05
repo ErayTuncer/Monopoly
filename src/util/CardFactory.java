@@ -54,7 +54,7 @@ public abstract class CardFactory {
 			System.err.println("File : " + file.getAbsolutePath() + " NOT FOUND!");
 		}
 	
-		return null;
+		return cards;
 	}
 	
 	private static void addCard(ArrayList<Card> cards, ArrayList<String> cardData) {
