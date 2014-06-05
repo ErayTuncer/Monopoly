@@ -8,6 +8,7 @@ public class RollDiceCommand implements Command {
 	@Override
 	public void execute(Controller controller) {
 		DicePair.roll();
+		controller.update();
 		movePlayer(controller);
 		controller.update();
 	}

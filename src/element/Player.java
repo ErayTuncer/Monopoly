@@ -13,6 +13,7 @@ public class Player {
 		this.playerID = playerID;
 		this.playerName = playerName;
 		this.playerBalance = Game.INITIAL_PAYMENT;
+		this.propertiesOwned = new ArrayList<Land>();
 		this.token = new Token(playerID);
 	}
 

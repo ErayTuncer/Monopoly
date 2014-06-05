@@ -61,7 +61,7 @@ public abstract class CardFactory {
 		Card card = new Card();
 		card.text = getCardText(cardData);
 		card.command = getCardCommand(cardData);
-		
+		cards.add(card);
 	}
 
 	private static ArrayList<String> generateCardData(String cardInfo) {
