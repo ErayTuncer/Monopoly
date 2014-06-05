@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 import command.Command;
 import element.Board;
 import element.DicePair;
@@ -33,12 +35,9 @@ public class Controller {
 
 	private ArrayList<Player> getPlayers() {
 		ArrayList<Player> players = new ArrayList<Player>();
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Player amount: ");
-		int n = Integer.parseInt(scanner.nextLine());
+		int n = Integer.parseInt(JOptionPane.showInputDialog("Enter Player Amount"));
 		for (int i = 0; i < n; i++) {
-			System.out.println("Enter player name: ");
-			players.add(new Player(i, scanner.nextLine()));
+			players.add(new Player(i, JOptionPane.showInputDialog(String.format("#%d Player Name : ", i + 1))));
 		}
 		return players;
 	}
