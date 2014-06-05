@@ -1,11 +1,29 @@
  package util;
 
-import element.Land;
+import element.ColoredLand;
+import element.Game;
+import element.InfrastructureLand;
+import element.TransportationLand;
 
 public class RentCalculator {
 
-	public static int calculate(Land land){
-		return 0;
+	private Game game;
+	
+	public RentCalculator(Game game) {
+		this.game = game;
+	}
+	public int calculate(ColoredLand land){
+		return land.getRentInfo().getBaseRent();
+		
+	}
+	
+	public int calculate(InfrastructureLand land){
+		return land.getRentInfo().getBaseRent();
+		
+	}
+	
+	public int calculate(TransportationLand land){
+		return land.getRentInfo().getBaseRent();
 		
 	}
 }

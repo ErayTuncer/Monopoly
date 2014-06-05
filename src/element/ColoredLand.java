@@ -3,8 +3,8 @@ package element;
 import java.awt.Color;
 
 import command.AskBuyCommand;
-
 import util.BuildingHolder;
+import util.RentCalculator;
 import behaviour.ConstructionAllowance;
 
 
@@ -45,6 +45,11 @@ public class ColoredLand extends PropertyLand {
 
 	public int getHotelPrice() {
 		return housePrice * 5;
+	}
+
+	@Override
+	public int acceptVisitor(RentCalculator calculator) {
+		return calculator.calculate(this);
 	}
 
 }
