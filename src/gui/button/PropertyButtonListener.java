@@ -7,12 +7,12 @@ import command.MortgageCommand;
 import controller.Controller;
 import element.PropertyLand;
 
-public class PropertyButton implements ActionListener {
+public class PropertyButtonListener implements ActionListener {
 
 	PropertyLand property;
 	Controller controller;
 
-	public PropertyButton(PropertyLand property, Controller controller) {
+	public PropertyButtonListener(PropertyLand property, Controller controller) {
 		this.property = property;
 		this.controller = controller;
 	}
