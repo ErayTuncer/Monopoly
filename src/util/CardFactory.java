@@ -7,12 +7,20 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 import command.Command;
+import command.DrawChanceCommand;
 import command.GetPrizeCommand;
+import command.MoveBackwardCommand;
+import command.MoveLandCommand;
+import command.PayFeeCommand;
 import element.Card;
 
 public abstract class CardFactory {
 
 	private static final String COMMAND_GETPRIZE = "GetPrizeCommand";
+	private static final String COMMAND_MOVELAND = "MoveLandCommand";
+	private static final String COMMAND_PAYFEE = "PayFeeCommand";
+	private static final String COMMAND_MOVEBACKWARD = "MoveBackwardCommand";
+	private static final String COMMAND_DRAWCHANCE = "DrawChanceCommand";
 	
 	private static final String CARD_CHANCE = "Chance";
 	private static final String CARD_COMMUNITYCHEST = "CommunityChest";
@@ -77,7 +85,15 @@ public abstract class CardFactory {
 	private Command getCardCommand(ArrayList<String> cardData) {
 		String commandTitle = getValueAt(cardData, 2);
 		if (commandTitle.equals(COMMAND_GETPRIZE)) {
-			return new GetPrizeCommand();
+			return new GetPrizeCommand(Integer.parseInt(getValueAt(cardData, 3)));
+		} else if (commandTitle.equals(COMMAND_MOVELAND)) {
+			return new MoveLandCommand(getValueAt(cardData, 3));
+		} else if (commandTitle.equals(COMMAND_PAYFEE)) {
+			return new PayFeeCommand(Integer.parseInt(getValueAt(cardData, 3)));
+		} else if (commandTitle.equals(COMMAND_MOVEBACKWARD)) {
+			return new MoveBackwardCommand(Integer.parseInt(getValueAt(cardData, 3)));
+		} else if (commandTitle.equals(COMMAND_DRAWCHANCE)) {
+			return new DrawChanceCommand();
 		} else {
 			throw new RuntimeException("Unknown command type!");
 		}
