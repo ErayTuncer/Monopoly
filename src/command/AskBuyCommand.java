@@ -13,16 +13,20 @@ public class AskBuyCommand implements Command {
 	public void execute(Controller controller) {
 		Game game = controller.getGame();
 		PropertyLand land = (PropertyLand) game.getBoard().getLands().get(game.getCurrentPlayer().getToken().getLandIndex());
-		String message = "Do you want to buy " + land.toString() + " for " + land.getPrice() + "K ?";
-		String title = controller.getGame().getCurrentPlayer().getName();
-		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
 		
-		if(reply == JOptionPane.YES_OPTION) {
+		if(getReply(controller, land) == JOptionPane.YES_OPTION) {
 			makePurchase(controller, land);
 		} else {
 			display("Player " + game.getCurrentPlayer().getName() + " did not want to purchase " + land.getName(), controller);
 		}
 		
+	}
+
+	private int getReply(Controller controller, PropertyLand land) {
+		String message = "Do you want to buy " + land.toString() + " for " + land.getPrice() + "K ?";
+		String title = controller.getGame().getCurrentPlayer().getName();
+		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+		return reply;
 	}
 
 	private void makePurchase(Controller controller, PropertyLand land) {
