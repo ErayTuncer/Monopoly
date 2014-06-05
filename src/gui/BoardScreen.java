@@ -3,6 +3,7 @@ package gui;
 import java.awt.Image;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,11 +18,13 @@ public class BoardScreen extends JPanel implements ResetableComponent {
 	private int[][] tileCoordinates;
 	private Game game;
 	private ArrayList<JLabel> tokens;
+	private JLabel circle;
 
 	public BoardScreen(Controller controller) { // TODO
 		initialize(controller);
 		addTiles();
 		addTokens();
+		addCircle();
 		addBoardImage();
 	}
 
@@ -41,7 +44,7 @@ public class BoardScreen extends JPanel implements ResetableComponent {
 		for (int i = 0; i < tileCoordinates.length; i++) {
 			tileCoordinates[i][0] = xPos;
 			tileCoordinates[i][1] = yPos;
-			
+
 			if (i + 1 % 10 == 0 || i % 10 == 0) {
 				slideAmount = 72;
 			} else {
@@ -71,7 +74,13 @@ public class BoardScreen extends JPanel implements ResetableComponent {
 			tokens.add(token);
 			add(token);
 		}
+	}
 
+	private void addCircle() {
+		Icon circleIcon = new ImageIcon("assets/circle.gif");
+		circle = new JLabel(circleIcon);
+		circle.setBounds(900, 900, 50, 50);
+		add(circle);
 	}
 
 	private void addBoardImage() {
@@ -84,13 +93,21 @@ public class BoardScreen extends JPanel implements ResetableComponent {
 
 	public void update() {
 		int tokenID = game.getCurrentPlayer().getPlayerID();
-		int tokenTile = game.getCurrentPlayer().getToken().getLandIndex() % game.getBoard().getSize(); 
+		int tokenTile = game.getCurrentPlayer().getToken().getLandIndex() % game.getBoard().getSize();
 		tokens.get(tokenID).setLocation(tileCoordinates[tokenTile][0], tileCoordinates[tokenTile][1]);
+		drawCircle(tokenID, tokenTile);
 		repaint();
 		revalidate();
-		
+
+		// Test Purpose
 		System.out.println("Dice : " + DicePair.getDiceValue());
 		System.out.println("Player : " + game.getCurrentPlayer().getName() + "  -  index : " + game.getCurrentPlayer().getToken().getLandIndex());
+	}
+
+	private void drawCircle(int tokenID, int tokenTile) {
+		int circleXPos = tileCoordinates[tokenTile][0] - (circle.getWidth() - tokens.get(tokenID).getWidth()) / 2;
+		int circleYPos = tileCoordinates[tokenTile][1] - (circle.getHeight() - tokens.get(tokenID).getHeight())	/ 2;
+		circle.setLocation(circleXPos, circleYPos);
 	}
 
 	@Override
