@@ -21,7 +21,5 @@ public class PropertyButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		new MortgageCommand(property).execute(controller);
 	}
-
-
-
+ 
 }

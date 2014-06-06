@@ -70,18 +70,6 @@ public class InfoScreen extends JPanel implements ResetableComponent {
 		add(dice);
 	}
 
-	private void update() {
-		playerName.setText("Name : " + controller.getGame().getCurrentPlayer().getName());
-		playerBalance.setText("Balance : " + controller.getGame().getCurrentPlayer().getBalance());
-		setDiceText();
-		propertyList.setProperties(controller);
-		for (ResetableComponent button : director.getButtons()) {
-			button.reset();
-		}
-		repaint();
-		revalidate();
-	}
-
 	private void setDiceText() {
 		try {dice.setText(String.format("Dice : %d - %d",
 					DicePair.getCurrent()[0], DicePair.getCurrent()[1]));
@@ -92,7 +80,15 @@ public class InfoScreen extends JPanel implements ResetableComponent {
 
 	@Override
 	public void reset() {
-		update();
+		playerName.setText("Name : " + controller.getGame().getCurrentPlayer().getName());
+		playerBalance.setText("Balance : " + controller.getGame().getCurrentPlayer().getBalance());
+		setDiceText();
+		propertyList.setProperties(controller);
+		for (ResetableComponent button : director.getButtons()) {
+			button.reset();
+		}
+		repaint();
+		revalidate();
 	}
 
 }
