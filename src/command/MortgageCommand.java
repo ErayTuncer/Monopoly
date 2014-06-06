@@ -56,8 +56,7 @@ public class MortgageCommand implements Command {
 		String title = player.getName();
 		String message = String.format("Do you want to %s %s for %dK?",
 				command, property.getName(), property.getMortgage());
-		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
-		return reply;
+		return JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
 	}
 
 }

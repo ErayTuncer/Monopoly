@@ -24,13 +24,13 @@ public class Controller {
 		Controller gameController = new Controller();
 		gameController.start();
 	}
-	
+
 	private Game game;
 	private GameScreen gameFrame;
-	
+
 	private String boardFilePath = "assets/gameBoard.txt";
 	private String cardFilePath = "assets/cards.txt";
-	
+
 	public Controller() {
 		ArrayList<Player> players = getPlayers();
 		initGame(players);
@@ -39,22 +39,36 @@ public class Controller {
 
 	private void initGame(ArrayList<Player> players) {
 		Board board = BoardFactory.readBoard(new File(boardFilePath));
-		this.game = new Game(board, players);		
+		this.game = new Game(board, players);
 	}
 
 	private ArrayList<Player> getPlayers() {
 		ArrayList<Player> players = new ArrayList<Player>();
-		int n = Integer.parseInt(JOptionPane.showInputDialog("Enter Player Amount"));
-		for (int i = 0; i < n; i++) {
+		int playerAmount = askNumberOfPlayers();
+		for (int i = 0; i < playerAmount; i++) {
 			players.add(new Player(i, JOptionPane.showInputDialog(String.format("#%d Player Name : ", i + 1))));
 		}
 		return players;
 	}
-	
+
+	private int askNumberOfPlayers() {
+		int numPlayer = 2;
+		try {
+			do {
+				numPlayer = Integer.parseInt(JOptionPane.showInputDialog("Enter Player Amount"));
+			} while (2 > numPlayer || numPlayer > 6);
+		} catch (Exception e) {
+			System.exit(0);
+		} finally{
+			return numPlayer;
+		}
+		
+	}
+
 	private void initCards() {
 		Bank bank = game.getBank();
 		bank.chanceCards = CardFactory.readChanceCards(new File(cardFilePath));
-		bank.communityCards = CardFactory.readCommunityCards(new File(cardFilePath));		
+		bank.communityCards = CardFactory.readCommunityCards(new File(cardFilePath));
 	}
 
 	private void start() {
@@ -62,10 +76,10 @@ public class Controller {
 		gameFrame.setVisible(true);
 	}
 
-	 public void update() {
+	public void update() {
 		gameFrame.reset();
 	}
-	
+
 	public void execute(Command command) {
 		command.execute(this);
 	}
