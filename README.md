@@ -1,13 +1,19 @@
 Monopoly
 ========
-In order to start the game:
+[Özyeğin University](http://ozyegin.edu.tr/) CS434 (Advance Object Oriented Programming) Course Project
 
-Run Command Prompt and Type
-C:\> cd \<Place_where_you_saved_program>\src\element
 
-Then type
-C:\<Place_where_you_saved_program>\src\element> javac Controller.java
-This runs javac.exe, the compiler.  You should see nothing but the next system prompt...
+####About License
 
-C:\mywork> java Controller
-This runs the Java interpreter.  
+Anyone can fork, download or use the code.
+We just kindly request credits in terms of code design.
+
+The credits should have the information below:
+
+Burcu Basak Sarikaya - burcu.sarikaya@ozu.edu.tr
+
+Eray Tuncer - eray.tuncer@ozu.edu.tr
+
+Ugur Ozkan - ugur.ozkan@ozu.edu.tr
+
+Please do <b>NOT</b> forget that the concept of the game belongs to [Hasbro] (http://www.hasbro.com/home/terms.html), and we do <b>NOT</b> claim anything but code design in this project.
