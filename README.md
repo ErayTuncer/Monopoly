@@ -1,6 +1,6 @@
 Monopoly
 ========
-[Özyeğin University](http://ozyegin.edu.tr/) CS434 (Advance Object Oriented Programming) Course Project
+[Özyeğin University](http://ozyegin.edu.tr/) CS434 ([Advance Object Oriented Programming](http://srl.ozyegin.edu.tr/cs534/)) Course Project
 
 
 ####About License
