@@ -2,6 +2,9 @@ Monopoly
 ========
 [Özyeğin University](http://ozyegin.edu.tr/) CS434 ([Advanced Object-Oriented Programming](http://srl.ozyegin.edu.tr/cs534/)) Course Project
 
+####Usage  
+  
+The Controller.java class in Monopoy/src/controller is the class that shoukd be run.
 
 ####About License
 
