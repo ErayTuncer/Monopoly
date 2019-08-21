@@ -4,7 +4,7 @@ Monopoly
 
 ####Usage  
   
-The Controller.java class in Monopoy/src/controller is the class that shoukd be run.
+The Controller.java class in Monopoy/src/controller is the class that should be run.
 
 ####About License
 
